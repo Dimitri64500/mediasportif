@@ -1,0 +1,59 @@
+.cell{
+  float: left;
+  display: block;
+
+}
+.one{
+  width: 8.3333333333333%;
+}
+&.two{
+  width: 16.6666666666667%;
+}
+&.tree{
+  width: 25%;
+}
+&.four{
+  width: 33.3333333333333%;
+}
+&.five{
+  width: 41.6666666666667%;
+}
+.six{
+  width: 50.00%;
+}
+.seven{
+  width: 58.3333333333333%;
+}
+.eight{
+  width: 66.6666666666667%;
+}
+.nine{
+  width: 75%;
+}
+.ten{
+  width: 83.33333333333333%;
+}
+.eleven{
+  width: 91.66666666666666%;
+}
+.twelve{
+  width: 100%;
+}
+.height-one {
+  box-sizing: content-box;
+  position: relative;
+  height: 0px;
+  padding-bottom: 8.33333333%;
+}
+.height-two {
+  box-sizing: content-box;
+  position: relative;
+  height: 0px;
+  padding-bottom: 16.66666667%;
+}
+.height-tree {
+  box-sizing: content-box;
+  position: relative;
+  height: 0px;
+  padding-bottom: 25%;
+}
