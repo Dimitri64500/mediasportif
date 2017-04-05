@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-head',
   templateUrl: './../../templates/head.component.html',
-  styleUrls: [ './../../styles/app.component.scss', './../../styles/app-head.component.scss' ]
+  styleUrls: [ './../../styles/app.component.scss' , './../../styles/app-head.component.scss' ]
 })
 export class HeadComponent  {  }

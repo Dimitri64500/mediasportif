@@ -1,13 +1,25 @@
 <md-grid-list cols="5" rowHeight="fit" class= "head" >
-  <md-grid-tile class="logo"
-       [colspan]="1"
-       [style.background]="black">
+  <md-grid-tile class="black"
+                [colspan]="1"
+                [style.background]="black">
   </md-grid-tile>
-  <md-grid-tile
+  <md-grid-tile class="red"
+                [colspan]="2"
+                [style.background]="red">
+  </md-grid-tile>
+  <md-grid-tile class="blue"
                 [colspan]="2"
                 [style.background]="red">
   </md-grid-tile>
 </md-grid-list>
-
+<md-toolbar class="menu">
+  <div>
+    <button class="menu-button" md-raised-button>Droit TV</button>
+    <button class="menu-button" md-raised-button>Click me!</button>
+    <button class="menu-button" md-raised-button>Click me!</button>
+    <button class="menu-button" md-raised-button>Click me!</button>
+    <button class="menu-button" md-raised-button>Click me!</button>
+  </div>
+</md-toolbar>
 
 
