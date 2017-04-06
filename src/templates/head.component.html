@@ -13,17 +13,19 @@
   <md-grid-tile class="blue"
                 [colspan]="1"
                 [style.background]="red">
-    recherche + login + accueil
+    <md-icon>home</md-icon>
+    <div class="form-group">
+      <input type="search" class="input-sm form-control" placeholder="Recherche">
+      <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
+    </div>
   </md-grid-tile>
 </md-grid-list>
 <md-toolbar class="menu">
   <div>
     <button class="menu-button" md-raised-button>Droit TV</button>
-    <button class="menu-button" md-raised-button>Click me!</button>
-    <button class="menu-button" md-raised-button>Click me!</button>
-    <button class="menu-button" md-raised-button>Click me!</button>
-    <button class="menu-button" md-raised-button>Click me!</button>
+    <button class="menu-button" md-raised-button>Programmes</button>
+    <button class="menu-button" md-raised-button>Médias français</button>
+    <button class="menu-button" md-raised-button>Médias étrangers</button>
+    <button class="menu-button" md-raised-button>Repères</button>
   </div>
 </md-toolbar>
-
-
