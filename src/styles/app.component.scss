@@ -88,7 +88,9 @@
 .mySlides {
   display: none;
 }
-
+.mat-figure{
+  align-items: start !important;
+}
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
