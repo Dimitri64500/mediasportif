@@ -70,7 +70,10 @@
   background: pink;
 }
 .component-height{
-  height: 100px;
+  min-height: 200px ;
+}
+.timeline-height{
+  min-height: 1000px;
 }
 
 * {box-sizing:border-box}
