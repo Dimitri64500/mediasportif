@@ -1,3 +1,14 @@
-/**
- * Created by Rhita on 04/04/2017.
- */
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AppComponent }   from './app.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'accueil',  component: AppComponent }
+];
+
+@NgModule({
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}

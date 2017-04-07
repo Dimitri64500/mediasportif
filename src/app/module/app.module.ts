@@ -12,4 +12,3 @@ import {TimelineComponent} from '../component/timeline.component';
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
-
