@@ -38,6 +38,16 @@ class MainController extends Controller
 
         echo json_encode($json);
     }
+  function addArticles()
+  {
+    $articles = new Article($this->db);
+    $articles->add();
+  }
+  function addCategorie()
+  {
+    $categorie = new Categorie($this->db);
+    $categorie->add();
+  }
 
     function apiNotes()
     {

@@ -31,9 +31,9 @@
             <li class="active"><a href="/">Overview <span class="sr-only">(current)</span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="/messages">Messages on UI f3 template</a></li>
+            <li><a href="/articles">Messages on UI f3 template</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="/api/messages">Messages JSON REST API</a></li>
+            <li><a href="/api/articles">Messages JSON REST API</a></li>
           </ul>
         </div>

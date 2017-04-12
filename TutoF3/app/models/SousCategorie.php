@@ -1,37 +1,39 @@
 <?php
-class SousCategorie extends DB\SQL\Mapper
+class SousCategorie extends Model
 {
-    public function __construct(DB\SQL $db) 
-    {
-        parent::__construct($db, 'souscategorie');
-    }
-        
-    public function all() 
+  public function __construct()
+  {
+    parent::__construct("souscategorie");
+  }
+
+    public function all()
     {
         $this->load();
         return $this->query;
     }
- 
-    public function getById($id) 
+
+    public function getById($id)
     {
         $this->load(array('id=?',$id));
         return $this->query;
     }
-   
-    public function add() 
+
+    public function add()
     {
-        $this->copyFrom('POST');
+      $this->parse_body();
+      $this->copyfrom('INPUT');
         $this->save();
     }
-       
-    public function edit($id) 
+
+    public function edit($id)
     {
         $this->load(array('id=?',$id));
-        $this->copyFrom('POST');
+      $this->parse_body();
+      $this->copyfrom('INPUT');
         $this->update();
     }
-      
-    public function delete($id) 
+
+    public function delete($id)
     {
         $this->load(array('id=?',$id));
         $this->erase();
