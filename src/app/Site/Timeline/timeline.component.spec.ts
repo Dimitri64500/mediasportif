@@ -1,26 +1,26 @@
 /**
- * Created by Rhita on 04/04/2017.
+ * Created by Denis on 06/04/2017.
  */
-import { HeadComponent } from './head.component';
+import { TimelineComponent } from './timeline.component';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-describe('HeadComponent', function () {
+describe('TimelineComponent', function () {
   let de: DebugElement;
-  let comp: HeadComponent;
-  let fixture: ComponentFixture<HeadComponent>;
+  let comp: TimelineComponent;
+  let fixture: ComponentFixture<TimelineComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeadComponent ]
+      declarations: [ TimelineComponent ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeadComponent);
+    fixture = TestBed.createComponent(TimelineComponent);
     comp = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('h1'));
   });

@@ -16,14 +16,15 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="systemjs.config.js"></script>
     <script>
-      System.import('main.js').catch(function(err){ console.error(err); });
+      System.import('app/main.js').catch(function(err){ console.error(err); });
     </script>
 
 
   </head>
 
   <body>
-    <app-head></app-head>
-    <my-app></my-app>
+    <app-head> taest ...</app-head>
+
+    <my-app>Loading AppComponent content here ...</my-app>
   </body>
 </html>
