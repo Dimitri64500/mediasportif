@@ -1,19 +1,19 @@
 <?php
 
 class UtilisateurController extends Controller
-{   
+{
     function render()
     {
 
         $template=new Template;
         echo $template->render('login.htm');
     }
- 
+
     function beforeroute()
     {
     }
 
-    function authenticate() 
+    function authenticate()
     {
         $login = $this->f3->get('POST.username');
         $password = $this->f3->get('POST.password');
@@ -25,10 +25,9 @@ class UtilisateurController extends Controller
             $this->f3->reroute('/login');
         }
         if(password_verify($password,$utilisateur->motdepasse)) {
-            $this->f3->set('SESSION.utilisateur', $utilisateur->login);
-            $this->f3->reroute('/');
+            return "ok";
         } else {
-            $this->f3->reroute('/login');
+            return "ko";
         }
     }
 }

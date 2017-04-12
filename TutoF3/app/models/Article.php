@@ -1,7 +1,7 @@
 <?php
 class Article extends Model
 {
-    public function __construct()
+    public function __construct(DB\SQL $db)
     {
         parent::__construct("article");
     }
