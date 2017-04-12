@@ -36,7 +36,7 @@ class MainController extends Controller
             array_push($json, $item);
         }
 
-        return json_encode($json);
+        echo json_encode($json);
     }
 
     function apiNotes()
@@ -58,13 +58,4 @@ class MainController extends Controller
 
         echo json_encode($json);
     }
-
-  function test(){
-
-    $formData = json_decode(file_get_contents('php://input'));
-    foreach ($formData as $key=>$value) {
-      $_POST[$key] = $value;
-      echo $_POST[$key];
-    }
-  }
 }
