@@ -1,0 +1,66 @@
+[class*="col-"] {
+
+  border: 1px solid black;
+  border-radius: 6px;
+  text-align: center;
+  overflow: auto;
+  height : 100%;
+}
+[class*="row"] {
+
+  border: 1px solid black;
+  border-radius: 6px;
+  text-align: center;
+}
+#conteneur1{
+  width : 100%;
+  height : 550px;
+}
+#row1{
+  height: 100%;
+}
+#head{
+  height : 10%
+}
+#foot{
+  height : 10%
+}
+#milieu{
+  height : 80%
+}
+table {
+  width: 100%;
+}
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+thead th {
+  height: 40px;
+
+  text-align: center;
+}
+
+tbody {
+  height : 500px;
+  overflow-y: auto;
+}
+
+thead {
+  /* fallback */
+}
+
+
+tbody td, thead th {
+  width: 14%;
+  float: left;
+}
+#etiq, #auteur, #titre{
+  margin-top:10px;
+}
