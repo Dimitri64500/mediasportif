@@ -10,11 +10,11 @@ import {AppRoutingModule}     from './app-routing.module';
  import {AdminAccueilComponent} from './Admin/admin-accueil.component';
 import {AccueilComponent} from './Site/Accueil/accueil.component';
 import {MenuComponent} from './Site/Menu/menu.component';
-
+import {CarouselComponent} from './Site/Carousel/carousel.component';
 
 @NgModule({
   imports:      [ BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule],
-  declarations: [ AppComponent, TimelineComponent, LoginComponent, AdminAccueilComponent, AccueilComponent, MenuComponent ],
+  declarations: [ AppComponent, TimelineComponent, LoginComponent, AdminAccueilComponent, AccueilComponent, MenuComponent, CarouselComponent ],
   providers:    [ AuthenticationService],
   bootstrap:    [ AppComponent ]
 })
