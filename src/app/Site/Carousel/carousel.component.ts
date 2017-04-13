@@ -6,7 +6,9 @@ import {Image} from './image.interface';
 var IMAGES: Image[] = [
   { 'title': 'Coupe UK', 'url': 'app/images/i1.jpg' },
   { 'title': 'Jeux Olympiques', 'url': 'app/images/i2.jpg' },
-  { 'title': 'Potter Me', 'url': 'app/images/i3.jpg' }
+  { 'title': 'Potter Me', 'url': 'app/images/i3.jpg' },
+  { 'title': 'Potter Me', 'url': 'app/images/i4.jpg' },
+  { 'title': 'Potter Me', 'url': 'app/images/i5.png' }
 ];
 
 // Component Decorator
