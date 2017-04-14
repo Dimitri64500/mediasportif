@@ -6,14 +6,27 @@
 <md-grid-list cols="5" rowHeight="2:2">
   <md-grid-tile class="blue"
                 [colspan]="4"
+                [rowspan]="3"
                 [style.background]="red">
     <my-timeline></my-timeline>
   </md-grid-tile>
   <md-grid-tile class="blue"
                 [colspan]="1"
+                [rowspan]="1"
                 [style.background]="red">
     <my-twitter></my-twitter>
+  </md-grid-tile>
+  <md-grid-tile class="blue"
+                [colspan]="1"
+                [rowspan]="1"
+                [style.background]="red">
     <my-liens></my-liens>
+  </md-grid-tile>
+  <md-grid-tile class="blue"
+                [colspan]="1"
+                [rowspan]="1"
+                [style.background]="red">
+    <my-footer></my-footer>
   </md-grid-tile>
 </md-grid-list>
 

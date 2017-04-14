@@ -16,6 +16,7 @@ import {AjoutProgrammeComponent} from './Admin/AjoutProgramme/ajout-programme.co
 import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.component';
 import {TwitterComponent} from './Site/Twitter/twitter.component';
 import {LiensComponent} from './Site/Liens/liens.component';
+import {FooterComponent} from './Site/Footer/footer.component';
 import {DataTableModule, SharedModule} from 'primeng/primeng';
 import {ArticleService} from './Service/ArticleService';
 
@@ -32,8 +33,9 @@ import {ArticleService} from './Service/ArticleService';
     AjoutArticleComponent,
     CarouselComponent,
     TwitterComponent,
-    LiensComponent],
-  providers: [AuthenticationService, ArticleService],
-  bootstrap: [AppComponent]
+    LiensComponent,
+    FooterComponent],
+  providers:    [ AuthenticationService, ArticleService],
+  bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
