@@ -2,7 +2,20 @@
 <div class="wrapper">
   <my-carousel></my-carousel>
 </div>
-<my-timeline></my-timeline>
-<!-- TWITTER -->
+
+<md-grid-list cols="5" rowHeight="2:2">
+  <md-grid-tile class="blue"
+                [colspan]="4"
+                [style.background]="red">
+    <my-timeline></my-timeline>
+  </md-grid-tile>
+  <md-grid-tile class="blue"
+                [colspan]="1"
+                [style.background]="red">
+    <my-twitter></my-twitter>
+    <my-liens></my-liens>
+  </md-grid-tile>
+</md-grid-list>
+
 <!-- PUB -->
 <!-- CONTACT -->
