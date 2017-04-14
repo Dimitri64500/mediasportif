@@ -16,9 +16,11 @@ import {AjoutProgrammeComponent} from './Admin/AjoutProgramme/ajout-programme.co
 import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.component';
 import {TwitterComponent} from './Site/Twitter/twitter.component';
 import {LiensComponent} from './Site/Liens/liens.component';
+import {DataTableModule, SharedModule} from 'primeng/primeng';
+import {ArticleService} from './Service/ArticleService';
 
 @NgModule({
-  imports: [BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule],
+  imports: [BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
@@ -31,7 +33,7 @@ import {LiensComponent} from './Site/Liens/liens.component';
     CarouselComponent,
     TwitterComponent,
     LiensComponent],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

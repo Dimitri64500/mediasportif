@@ -21,11 +21,10 @@ class MainController extends Controller
 
     function apiArticles()
     {
-        $articles = new Article($this->db);
+        $articles = new Article();
         $data = $articles->all();
 
         $json = array();
-
         foreach($data as $row) {
             $item = array();
 
@@ -35,8 +34,7 @@ class MainController extends Controller
 
             array_push($json, $item);
         }
-
-        return json_encode($json);
+        echo json_encode($json);
     }
   function addArticles()
   {

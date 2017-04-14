@@ -27,9 +27,9 @@ class UtilisateurController extends Controller
         }
         if(password_verify($password,$utilisateur->motdepasse)) {
           var_dump('ok');
-            return "ok";
+            echo "ok";
         } else {
-            return "ko";
+            echo "ko";
         }
     }
 }
