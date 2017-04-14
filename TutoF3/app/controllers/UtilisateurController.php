@@ -15,16 +15,18 @@ class UtilisateurController extends Controller
 
     function authenticate()
     {
-        $login = $this->f3->get('POST.username');
-        $password = $this->f3->get('POST.password');
-
-        $utilisateur = new Utilisateur($this->db);
+      $utilisateur = new Utilisateur($this->db);
+      $f3 = Base::instance();
+      $input = json_decode($f3->get('BODY'));
+      $login = $input->username;
+      $password = $input->password;
         $utilisateur->getByLogin($login);
 
         if($utilisateur->dry()) {
             $this->f3->reroute('/login');
         }
         if(password_verify($password,$utilisateur->motdepasse)) {
+          var_dump('ok');
             return "ok";
         } else {
             return "ko";
