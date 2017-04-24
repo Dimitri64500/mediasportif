@@ -1,13 +1,6 @@
 <h1>Récapitulatif des articles</h1>
 
-<p-dataTable [value]="articles">
-  <p-column field="id" header="ID"></p-column>
-  <p-column field="idutilisateur" header="Idutilisateur"></p-column>
-  <p-column field="url" header="Brand"></p-column>
-  <p-column field="status" header="Color"></p-column>
-</p-dataTable>
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <div class="container" id="conteneur1">
       <div class="row" id="row1">
@@ -27,58 +20,12 @@
 
           </div>
           <div class="col-lg-9">
-
-
-
-            <table class="table table-striped">
-              <thead>
-              <tr>
-                <th></th>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th>Catégories</th>
-                <th>Etiquettes</th>
-                <th>Commentaires</th>
-                <th>Date</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <fieldset class="form-group">
-                    <input type="checkbox" id="checkbox1">
-                    <label for="checkbox1"></label>
-                  </fieldset>
-                </td>
-                <td class="filterable-cell">Football Ligue</td>
-                <td class="filterable-cell">Football Ligue</td>
-                <td class="filterable-cell">Football Ligue</td>
-                <td class="filterable-cell">sqs125</td>
-                <td class="filterable-cell">dee</td>
-                <td class="filterable-cell">2rer</td>
-              </tr>
-              <tr>
-                <td>
-                  <fieldset class="form-group">
-                    <input type="checkbox" id="checkbox2">
-                    <label for="checkbox2"></label>
-                  </fieldset>
-                </td>
-                <td class="filterable-cell">Football Ligue</td>
-                <td class="filterable-cell">Football Ligue</td>
-                <td class="filterable-cell">Football Ligue</td>
-                <td class="filterable-cell">sqs125</td>
-                <td class="filterable-cell">dee</td>
-                <td class="filterable-cell">2rer</td>
-              </tr>
-
-
-              </tbody>
-            </table>
-
-
-
-
+            <p-dataTable [value]="articles">
+              <p-column field="id" header="ID" sortable=true></p-column>
+              <p-column field="idutilisateur" header="Idutilisateur"></p-column>
+              <p-column field="url" header="Brand"></p-column>
+              <p-column field="status" header="Color"></p-column>
+            </p-dataTable>
           </div>
         </div>
     <div class="row" id="foot">
