@@ -20,6 +20,7 @@ import {LiensComponent} from './Site/Liens/liens.component';
 import {FooterComponent} from './Site/Footer/footer.component';
 import {DataTableModule, SharedModule} from 'primeng/primeng';
 import {ArticleService} from './Service/ArticleService';
+import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
 import {CategorieService} from './Service/CategorieService';
 import {EditorModule} from 'primeng/components/editor/editor';
 import {GalleriaModule} from 'primeng/primeng';
@@ -28,7 +29,7 @@ import {GalleriaModule} from 'primeng/primeng';
 
 
 @NgModule({
-  imports: [EditorModule, GalleriaModule,FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
+  imports: [EditorModule, GalleriaModule, FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
@@ -41,8 +42,8 @@ import {GalleriaModule} from 'primeng/primeng';
     CarouselComponent,
     TwitterComponent,
     LiensComponent,
-    FooterComponent,
-    LiensComponent],
+    PageArticleComponent,
+  FooterComponent],
   providers: [AuthenticationService, ArticleService, CategorieService],
   bootstrap: [AppComponent]
 })

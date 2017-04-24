@@ -16,6 +16,11 @@ export class ArticleService {
       .toPromise()
       .then(res => <Article[]> res.json());
   }
+  getArticle(url: String): Promise<Article> {
+    return this.http.get('http://localhost:8088/api/article/' + url)
+      .toPromise()
+      .then(res => <Article> res.json());
+  }
   getArticlesNotes(): Promise<ArticleNote[]> {
     return this.http.get('http://localhost:8088/api/articlesnotes')
       .toPromise()

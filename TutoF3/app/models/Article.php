@@ -22,11 +22,17 @@ class Article extends Model
         return $this->query;
     }
 
-    public function add()
-    {
-        $this->copyFrom('POST.nom');
-      var_dump($this->save());
-    }
+  public function getByUrl($url)
+  {
+    $this->load(array('url=?', $url));
+    return $this->query;
+  }
+
+  public function add()
+  {
+    $this->copyFrom('POST.nom');
+    var_dump($this->save());
+  }
 
     public function edit($id)
     {
