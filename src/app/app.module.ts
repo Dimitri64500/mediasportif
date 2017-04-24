@@ -34,8 +34,9 @@ import {ArticleService} from './Service/ArticleService';
     CarouselComponent,
     TwitterComponent,
     LiensComponent,
-    FooterComponent],
-  providers:    [ AuthenticationService, ArticleService],
-  bootstrap:    [ AppComponent ]
+    FooterComponent,
+    LiensComponent],
+  providers: [AuthenticationService, ArticleService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
