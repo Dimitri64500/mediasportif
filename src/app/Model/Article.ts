@@ -4,6 +4,7 @@ export class Article {
   id: number;
   titre: string;
   texte: string;
+  resume: string;
   date: Date;
   idutilisateur: number;
   url: string;
