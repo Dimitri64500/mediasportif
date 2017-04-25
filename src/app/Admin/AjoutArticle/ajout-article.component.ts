@@ -5,7 +5,8 @@ import {Categorie} from '../../Model/Categorie';
 @Component({
   selector: 'my-ajout-article',
   templateUrl: './ajout-article.component.html',
-  styleUrls: ['./ajout-article.component.scss', ]
+  styleUrls: ['./ajout-article.component.scss', ],
+  inputs:['activeColor','baseColor','overlayColor']
 })
 
 export class AjoutArticleComponent implements OnInit {

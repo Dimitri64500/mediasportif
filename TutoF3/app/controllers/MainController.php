@@ -104,4 +104,25 @@ class MainController extends Controller
       echo $_POST[$key];
     }
   }
+
+  function upload(){
+    $uploaddir = realpath('./') . '/';
+    $uploadfile = $uploaddir . basename($_POST['file']['name']);
+
+    echo $uploadfile;
+    echo "\n";
+    echo '<pre>';
+    echo $_POST['file']['tmp_name'];
+    if (move_uploaded_file($_POST['file']['tmp_name'], $uploadfile)) {
+      echo "File is valid, and was successfully uploaded.\n";
+    } else {
+      echo "Possible file upload attack!\n";
+    }
+    echo 'Here is some more debugging info:';
+
+    print_r($_FILES);
+    echo "\n<hr />\n";
+    print_r($_POST);
+    print "</pr" . "e>\n";
+  }
 }

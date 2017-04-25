@@ -24,12 +24,12 @@ import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
 import {CategorieService} from './Service/CategorieService';
 import {EditorModule} from 'primeng/components/editor/editor';
 import {GalleriaModule} from 'primeng/primeng';
-
+import {FileUploadModule} from 'primeng/primeng';
 
 
 
 @NgModule({
-  imports: [EditorModule, GalleriaModule, FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
+  imports: [EditorModule, FileUploadModule, GalleriaModule, FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
@@ -43,7 +43,7 @@ import {GalleriaModule} from 'primeng/primeng';
     TwitterComponent,
     LiensComponent,
     PageArticleComponent,
-  FooterComponent],
+    FooterComponent],
   providers: [AuthenticationService, ArticleService, CategorieService],
   bootstrap: [AppComponent]
 })

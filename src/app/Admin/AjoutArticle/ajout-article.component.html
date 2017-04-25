@@ -1,7 +1,8 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-
-
+<p-fileUpload name="myfile[]" url="http://localhost:8088/upload" chooseLabel="Parcourir"
+              uploadLabel="Upload"
+              cancelLabel="Annuler"></p-fileUpload>
 
 <div class="editor">
   <p-editor [(ngModel)]="text1" [style]="{'height':'400px'}"></p-editor>
