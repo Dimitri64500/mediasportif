@@ -2,22 +2,18 @@
 
 class MainController extends Controller
 {
-  function render()
-  {
-    $this->f3->set('view', 'dashboard.htm');
-    $template = new Template;
-    echo $template->render('layout.htm');
-  }
-
-  function displayArticles()
-  {
-    $article = new Article($this->db);
-
-    $this->f3->set('articles', $article->all());
-    $this->f3->set('view', 'messages.htm');
-    $template = new Template;
-    echo $template->render('layout.htm');
-  }
+  function apiArticlesNotes(){
+    $articles = new Article();
+    $data = $articles->allArticlesAndNote();
+    $json = array();
+    foreach ($data as $row) {
+      $item = array();
+      foreach ($row as $key => $value) {
+        $item[$key] = $value;
+      }
+      array_push($json, $item);
+    }
+    echo json_encode($json);  }
 
   function apiArticles()
   {
@@ -52,6 +48,20 @@ class MainController extends Controller
       }
 
       array_push($json, $item);
+    }
+
+    function apiArticlesNotes(){
+      $articles = new Article();
+      $data = $articles->allArticlesAndNote();
+      $json = array();
+      foreach ($data as $row){
+        $item = array();
+        foreach ($row as $key => $value) {
+          $item[$key] = $value;
+        }
+        array_push($json, $item);
+      }
+      echo json_encode($json);
     }
   function addArticles()
   {
@@ -93,35 +103,5 @@ class MainController extends Controller
       $_POST[$key] = $value;
       echo $_POST[$key];
     }
-  }
-  function apiCategories()
-  {
-    $categories = new Categorie();
-    $data = $categories->all();
-
-    $json = array();
-    foreach($data as $row) {
-      $item = array();
-
-      foreach($row as $key => $value) {
-        $item[$key] = $value;
-      }
-
-      array_push($json, $item);
-    }
-    echo json_encode($json);
-  }
-  function apiArticlesNotes(){
-    $articles = new Article();
-    $data = $articles->allArticlesAndNote();
-    $json = array();
-    foreach ($data as $row){
-      $item = array();
-      foreach ($row as $key => $value) {
-        $item[$key] = $value;
-      }
-      array_push($json, $item);
-    }
-    echo json_encode($json);
   }
 }
