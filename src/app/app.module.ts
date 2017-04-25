@@ -27,7 +27,7 @@ import {EditorModule} from 'primeng/components/editor/editor';
 
 
 @NgModule({
-  imports: [EditorModule, CategoriesService, FormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
+  imports: [EditorModule, FormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
@@ -42,7 +42,7 @@ import {EditorModule} from 'primeng/components/editor/editor';
     LiensComponent,
     FooterComponent,
     LiensComponent],
-  providers: [AuthenticationService, ArticleService],
+  providers: [AuthenticationService, ArticleService, CategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
