@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'my-ajout-article',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ajout-article.component.scss', ]
 })
 
-export class AjoutArticleComponent { }
+export class AjoutArticleComponent{
+  text1: string;
+}

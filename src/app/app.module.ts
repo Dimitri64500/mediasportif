@@ -1,5 +1,6 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule}  from '@angular/forms';
 import {AppComponent}  from './app.component';
 import {MdGridListModule, MdToolbarModule, MdButtonModule} from '@angular/material';
 import {TimelineComponent} from './Site/Timeline/timeline.component';
@@ -18,10 +19,11 @@ import {TwitterComponent} from './Site/Twitter/twitter.component';
 import {LiensComponent} from './Site/Liens/liens.component';
 import {FooterComponent} from './Site/Footer/footer.component';
 import {DataTableModule, SharedModule} from 'primeng/primeng';
+import {EditorModule} from 'primeng/components/editor/editor';
 import {ArticleService} from './Service/ArticleService';
 
 @NgModule({
-  imports: [BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
+  imports: [BrowserModule, MdGridListModule, MdToolbarModule, FormsModule,MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule, EditorModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
