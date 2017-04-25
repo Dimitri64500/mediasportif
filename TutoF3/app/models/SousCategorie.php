@@ -17,6 +17,13 @@ class SousCategorie extends Model
         $this->load(array('id=?',$id));
         return $this->query;
     }
+  public function getSousCatById($id)
+  {
+
+     $rows=$this->db->exec('select nom from souscategorie where id in ( select idsouscategorie from categoriesouscategorie where idcategorie ="'.$id.'" )');
+
+     return $rows;
+  }
 
     public function add()
     {

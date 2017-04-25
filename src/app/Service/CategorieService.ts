@@ -6,8 +6,8 @@ import {Http} from '@angular/http';
 import {Categorie} from './../Model/Categorie';
 
 @Injectable()
-export class CategorieService{
-
+export class CategoriesService {
+  url: string;
   constructor(private http: Http) {}
 
   getCategories(): Promise<Categorie[]> {
@@ -15,4 +15,11 @@ export class CategorieService{
       .toPromise()
       .then(res => <Categorie[]> res.json());
   }
+  getSousCategories(id: String): Promise<Categorie[]> {
+    this.url = 'http://localhost:8088/api/souscategorie/' + id;
+    return this.http.get(this.url)
+      .toPromise()
+      .then(res => <Categorie[]> res.json());
+  }
 }
+
