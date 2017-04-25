@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../Service/ArticleService';
 import {ArticleNote} from '../../Model/ArticleNote';
+
 @Component({
   selector: 'my-timeline',
   templateUrl: './timeline.component.html' ,
@@ -16,7 +17,9 @@ export class TimelineComponent implements OnInit {
   getArticlesNotes(): void {
     this.articleService.getArticlesNotes().then(res => this.articlesNotes = res);
   }
+
   ngOnInit(): void {
     this.getArticlesNotes();
   }
+
 }

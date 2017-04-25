@@ -1,22 +1,57 @@
-<div class="container">
+<!--<div class="container">
   <div class="page-header">
     <h1 id="timeline">Timeline</h1>
   </div>
   <ul class="timeline">
-    <li *ngFor="let article of articlesNotes" class="timeline-inverted">
-      <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-      <div class="timeline-panel">
-        <div class="timeline-heading">
-          <h4 class="timeline-title">{{article.titre}}</h4>
-          <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>{{article.date}}</small></p>
+      <li *ngFor="let article of articlesNotes | slice:0:2" class="timeline-inverted">
+        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">{{article.titre}}</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>{{article.date}}</small></p>
+          </div>
+          <div *ngIf="article.url"class="timeline-body">
+            <a href="{{article.url}}">{{article.texte}}</a>
+          </div>
+          <div *ngIf="!article.url"class="timeline-body">
+            <p>{{article.texte}}</p>
+          </div>
         </div>
-        <div *ngIf="article.url"class="timeline-body">
-          <a href="{{article.url}}">{{article.texte}}</a>
-        </div>
-        <div *ngIf="!article.url"class="timeline-body">
-          <p>{{article.texte}}</p>
-        </div>
-      </div>
-    </li>
+      </li>
   </ul>
 </div>
+-->
+  <p-dataScroller [value]="articlesNotes" [rows]="5" class="container">
+  <ng-template let-articleNote pTemplate="item">
+
+    <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-3" style="text-align:center"><i class="glyphicon glyphicon-check"></i></div>
+        <div class="ui-grid-col-9">
+          <div class="ui-grid ui-grid-responsive ui-fluid">
+
+            <div class="ui-grid-row">
+              <h4 class="timeline-title">{{articleNote.titre}}</h4>
+            </div>
+
+            <div class="ui-grid-row">
+              <small class="text-muted"><i class="glyphicon glyphicon-time"></i>{{articleNote.date}}</small>
+            </div>
+
+            <div class="ui-grid-row">
+              <div *ngIf="articleNote.url"class="timeline-body">
+                <a href="{{articleNote.url}}">{{articleNote.texte}}</a>
+              </div>
+            </div>
+            <div class="ui-grid-row">
+              <div *ngIf="!articleNote.url"class="timeline-body">
+                {{articleNote.texte}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataScroller>

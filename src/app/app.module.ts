@@ -18,7 +18,7 @@ import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.componen
 import {TwitterComponent} from './Site/Twitter/twitter.component';
 import {LiensComponent} from './Site/Liens/liens.component';
 import {FooterComponent} from './Site/Footer/footer.component';
-import {DataTableModule, SharedModule} from 'primeng/primeng';
+import {DataTableModule, SharedModule, DataScrollerModule} from 'primeng/primeng';
 import {ArticleService} from './Service/ArticleService';
 import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
 import {CategorieService} from './Service/CategorieService';
@@ -29,7 +29,7 @@ import {FileUploadModule} from 'primeng/primeng';
 
 
 @NgModule({
-  imports: [EditorModule, FileUploadModule, GalleriaModule, FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
+  imports: [EditorModule, FileUploadModule, GalleriaModule, FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule, DataScrollerModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
