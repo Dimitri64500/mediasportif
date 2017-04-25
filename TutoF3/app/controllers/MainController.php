@@ -36,20 +36,6 @@ class MainController extends Controller
         }
         echo json_encode($json);
     }
-
-    function apiArticlesNotes(){
-      $articles = new Article();
-      $data = $articles->allArticlesAndNote();
-      $json = array();
-      foreach ($data as $row){
-        $item = array();
-        foreach ($row as $key => $value) {
-          $item[$key] = $value;
-        }
-        array_push($json, $item);
-      }
-      echo json_encode($json);
-    }
   function addArticles()
   {
     $articles = new Article($this->db);
@@ -88,5 +74,35 @@ class MainController extends Controller
       $_POST[$key] = $value;
       echo $_POST[$key];
     }
+  }
+  function apiCategories()
+  {
+    $categories = new Categorie();
+    $data = $categories->all();
+
+    $json = array();
+    foreach($data as $row) {
+      $item = array();
+
+      foreach($row as $key => $value) {
+        $item[$key] = $value;
+      }
+
+      array_push($json, $item);
+    }
+    echo json_encode($json);
+  }
+  function apiArticlesNotes(){
+    $articles = new Article();
+    $data = $articles->allArticlesAndNote();
+    $json = array();
+    foreach ($data as $row){
+      $item = array();
+      foreach ($row as $key => $value) {
+        $item[$key] = $value;
+      }
+      array_push($json, $item);
+    }
+    echo json_encode($json);
   }
 }

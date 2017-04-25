@@ -1,3 +1,13 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<div class="form-group">
+  <label for="sel1">Select list:</label>
+  <select class="form-control" id="sel1" [(ngmodel)]="categories">
+    <option *ngfor="let o of categories.nom"  > </option>
+  </select>
+</div>
+
+
+
 <div class="editor">
   <p-editor [(ngModel)]="text1" [style]="{'height':'400px'}"></p-editor>
 </div>
@@ -20,3 +30,4 @@ Pour afficher le texte : text1
 <p>Value: {{text2||'empty'}}</p>
 
 <button pButton type="button" label="Clear" icon="fa-close" (click)="text2=null"></button> -->
+
