@@ -1,8 +1,1 @@
-<div class="carousel">
-  <ul class="slides">
-    <li *ngFor="let image of images">
-      <h2>{{image.title}}</h2>
-      <img src="{{image.url}}" width="660px" height="330px" alt="">
-    </li>
-  </ul>
-</div>
+<p-galleria [images]="images" panelWidth="600" panelHeight="330" [showCaption]="true"></p-galleria>

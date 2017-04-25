@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoriesService} from '../../Service/CategorieService';
+import {CategorieService} from '../../Service/CategorieService';
 import {Categorie} from '../../Model/Categorie';
 
 @Component({
@@ -12,7 +12,7 @@ export class AjoutArticleComponent implements OnInit {
   categories: Categorie[];
   text1: string;
   constructor(
-    private CategorieService: CategoriesService ) { }
+    private CategorieService: CategorieService ) { }
 
   getArticles(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);

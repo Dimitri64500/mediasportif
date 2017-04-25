@@ -1,6 +1,7 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent}  from './app.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MdGridListModule, MdToolbarModule, MdButtonModule} from '@angular/material';
 import {TimelineComponent} from './Site/Timeline/timeline.component';
 import {LoginComponent} from './Site/Login/login.component';
@@ -19,15 +20,15 @@ import {LiensComponent} from './Site/Liens/liens.component';
 import {FooterComponent} from './Site/Footer/footer.component';
 import {DataTableModule, SharedModule} from 'primeng/primeng';
 import {ArticleService} from './Service/ArticleService';
-import {CategoriesService} from './Service/CategorieService';
-import {FormsModule} from '@angular/forms';
+import {CategorieService} from './Service/CategorieService';
 import {EditorModule} from 'primeng/components/editor/editor';
+import {GalleriaModule} from 'primeng/primeng';
 
 
 
 
 @NgModule({
-  imports: [EditorModule, FormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
+  imports: [EditorModule, GalleriaModule,FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
@@ -42,7 +43,7 @@ import {EditorModule} from 'primeng/components/editor/editor';
     LiensComponent,
     FooterComponent,
     LiensComponent],
-  providers: [AuthenticationService, ArticleService, CategoriesService],
+  providers: [AuthenticationService, ArticleService, CategorieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@ import {Http} from '@angular/http';
 import {Categorie} from './../Model/Categorie';
 
 @Injectable()
-export class CategoriesService{
+export class CategorieService{
 
   constructor(private http: Http) {}
 
