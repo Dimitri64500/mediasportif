@@ -49,20 +49,8 @@ class MainController extends Controller
 
       array_push($json, $item);
     }
+  }
 
-    function apiArticlesNotes(){
-      $articles = new Article();
-      $data = $articles->allArticlesAndNote();
-      $json = array();
-      foreach ($data as $row){
-        $item = array();
-        foreach ($row as $key => $value) {
-          $item[$key] = $value;
-        }
-        array_push($json, $item);
-      }
-      echo json_encode($json);
-    }
   function addArticles()
   {
     $articles = new Article($this->db);
@@ -103,26 +91,5 @@ class MainController extends Controller
       $_POST[$key] = $value;
       echo $_POST[$key];
     }
-  }
-
-  function upload(){
-    $uploaddir = realpath('./') . '/';
-    $uploadfile = $uploaddir . basename($_POST['file']['name']);
-
-    echo $uploadfile;
-    echo "\n";
-    echo '<pre>';
-    echo $_POST['file']['tmp_name'];
-    if (move_uploaded_file($_POST['file']['tmp_name'], $uploadfile)) {
-      echo "File is valid, and was successfully uploaded.\n";
-    } else {
-      echo "Possible file upload attack!\n";
-    }
-    echo 'Here is some more debugging info:';
-
-    print_r($_FILES);
-    echo "\n<hr />\n";
-    print_r($_POST);
-    print "</pr" . "e>\n";
   }
 }
