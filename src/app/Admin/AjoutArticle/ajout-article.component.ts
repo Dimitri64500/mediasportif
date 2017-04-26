@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {CategorieService} from '../../Service/CategorieService';
+import {CategoriesService} from '../../Service/CategorieService';
 import {Categorie} from '../../Model/Categorie';
 
 @Component({
   selector: 'my-ajout-article',
   templateUrl: './ajout-article.component.html',
-  styleUrls: ['./ajout-article.component.scss', ],
-  inputs:['activeColor','baseColor','overlayColor']
+  styleUrls: ['./ajout-article.component.scss', ]
 })
 
 export class AjoutArticleComponent implements OnInit {
@@ -15,15 +14,17 @@ export class AjoutArticleComponent implements OnInit {
   text1: string;
   id: number;
   valeurtmp: string;
+
   setValue(data: string) {
     this.valeurtmp = data;
     console.log('hola' + this.valeurtmp);
   }
+
   getValue() {
     return this.valeurtmp;
   }
   constructor(
-    private CategorieService: CategorieService ) { }
+    private CategorieService: CategoriesService ) { }
 
   getCategorie(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);

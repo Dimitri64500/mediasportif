@@ -21,7 +21,7 @@ import {FooterComponent} from './Site/Footer/footer.component';
 import {DataTableModule, SharedModule, DataScrollerModule} from 'primeng/primeng';
 import {ArticleService} from './Service/ArticleService';
 import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
-import {CategorieService} from './Service/CategorieService';
+import {CategoriesService} from './Service/CategorieService';
 import {EditorModule} from 'primeng/components/editor/editor';
 import {GalleriaModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
@@ -44,7 +44,7 @@ import {FileUploadModule} from 'primeng/primeng';
     LiensComponent,
     PageArticleComponent,
     FooterComponent],
-  providers: [AuthenticationService, ArticleService, CategorieService],
+  providers: [AuthenticationService, ArticleService, CategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

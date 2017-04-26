@@ -1,18 +1,12 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
 <div class="column small-12 large-2">
-  <select name="categories" [(ngModel)]="categories" >
+  <select name="categories" [(ngModel)]="categories">
     <option *ngFor="let categorie of categories" [ngValue]="categorie">
       {{categorie.nom}}
     </option>
   </select>
 </div>
-
-
-<p-fileUpload name="myfile[]" url="http://localhost:8088/upload" chooseLabel="Parcourir"
-              uploadLabel="Upload"
-              cancelLabel="Annuler"></p-fileUpload>
-
-
 
 <div class="editor">
   <p-editor [(ngModel)]="text1" [style]="{'height':'400px'}"></p-editor>
