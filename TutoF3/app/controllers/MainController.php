@@ -129,4 +129,11 @@ class MainController extends Controller
     }
     echo json_encode($json);
   }
+
+  function upload(){
+    $uploads_dir = '/uploads';
+    $tmp_name = $_FILES['file_contents']['tmp_name'];
+    $name = $_FILES['file_contents']['name'];
+    move_uploaded_file($tmp_name, "$uploads_dir/$name");
+  }
 }

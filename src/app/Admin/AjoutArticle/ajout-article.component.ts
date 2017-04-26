@@ -18,7 +18,6 @@ export class AjoutArticleComponent implements OnInit {
 
   onChange(cat: Categorie) {
     this.valeurtmp = cat.id;
-    alert(this.valeurtmp);
     this.getSousCategorie(this.valeurtmp);
   }
   constructor(
