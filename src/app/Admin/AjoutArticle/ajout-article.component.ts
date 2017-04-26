@@ -13,15 +13,13 @@ export class AjoutArticleComponent implements OnInit {
   souscategories: Categorie[];
   text1: string;
   id: number;
-  valeurtmp: string;
+  valeurtmp: number;
 
-  setValue(data: string) {
-    this.valeurtmp = data;
-    console.log('hola' + this.valeurtmp);
-  }
 
-  getValue() {
-    return this.valeurtmp;
+  onChange(cat: Categorie) {
+    this.valeurtmp = cat.id;
+    alert(this.valeurtmp);
+    this.getSousCategorie(this.valeurtmp);
   }
   constructor(
     private CategorieService: CategoriesService ) { }
@@ -30,10 +28,11 @@ export class AjoutArticleComponent implements OnInit {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
   }
   /*instancié le momoent qu on change la catégorie*/
-  getSousCategorie(id: string): void {
-    this.CategorieService.getSousCategories(id).then(scategories => this.souscategories = scategories);
+  getSousCategorie(id: number): void {
+    this.CategorieService.getSousCategories(id).then(souscategories => this.souscategories = souscategories);
   }
   ngOnInit(): void {
     this.getCategorie();
+    this.getSousCategorie(1);
   }
 }

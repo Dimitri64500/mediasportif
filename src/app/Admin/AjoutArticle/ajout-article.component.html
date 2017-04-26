@@ -1,9 +1,17 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="column small-12 large-2">
-  <select name="categories" [(ngModel)]="categories">
+  <select name="categories" [(ngModel)]="categories" (ngModelChange)="onChange($event)">
     <option *ngFor="let categorie of categories" [ngValue]="categorie">
       {{categorie.nom}}
+    </option>
+  </select>
+</div>
+
+<div class="column small-12 large-2">
+  <select name="scategories" [(ngModel)]="souscategories">
+    <option *ngFor="let soucategorie of souscategories" [ngValue]="soucategorie">
+      {{soucategorie.nom}}
     </option>
   </select>
 </div>
