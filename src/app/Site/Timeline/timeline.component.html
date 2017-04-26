@@ -31,22 +31,22 @@
           <div class="ui-grid ui-grid-responsive ui-fluid">
 
             <div class="ui-grid-row">
-              <h4 class="timeline-title">{{articleNote.titre}}</h4>
-            </div>
-
-            <div class="ui-grid-row">
-              <small class="text-muted"><i class="glyphicon glyphicon-time"></i>{{articleNote.date}}</small>
-            </div>
-
-            <div class="ui-grid-row">
               <div *ngIf="articleNote.url"class="timeline-body">
-                <a href="{{articleNote.url}}">{{articleNote.texte}}</a>
+                <a href="{{articleNote.url}}"><h4 class="timeline-title">{{articleNote.titre}}</h4></a>
               </div>
             </div>
             <div class="ui-grid-row">
               <div *ngIf="!articleNote.url"class="timeline-body">
-                {{articleNote.texte}}
+                <h4 class="timeline-title">{{articleNote.titre}}</h4>
               </div>
+            </div>
+
+            <div class="ui-grid-row">
+              <small class="text-muted"><i class="glyphicon glyphicon-time"></i>&nbsp;{{articleNote.date}}</small>
+            </div>
+
+            <div class="ui-grid-row">
+                {{articleNote.texte}}
             </div>
 
           </div>
