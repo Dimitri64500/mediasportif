@@ -33,6 +33,6 @@ export class CarouselComponent {
   }
   redirect(event: any) {
     let url = event.image.url;
-    this.router.navigate(['article/'], url);
+    this.router.navigate(['/article', url]);
   }
 }
