@@ -18,7 +18,7 @@ import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.componen
 import {TwitterComponent} from './Site/Twitter/twitter.component';
 import {LiensComponent} from './Site/Liens/liens.component';
 import {FooterComponent} from './Site/Footer/footer.component';
-import {DataTableModule, SharedModule, DataScrollerModule} from 'primeng/primeng';
+import {DataTableModule, SharedModule, DataScrollerModule, CheckboxModule, ListboxModule, ButtonModule} from 'primeng/primeng';
 import {ArticleService} from './Service/ArticleService';
 import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
 import {CategoriesService} from './Service/CategorieService';
@@ -30,7 +30,23 @@ import {UserService} from './Service/UserService';
 
 
 @NgModule({
-  imports: [EditorModule, FileUploadModule, GalleriaModule, FormsModule, ReactiveFormsModule, BrowserModule, MdGridListModule, MdToolbarModule, MdButtonModule, HttpModule, AppRoutingModule, DataTableModule, SharedModule, DataScrollerModule],
+  imports: [EditorModule,
+    FileUploadModule,
+    GalleriaModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    MdGridListModule,
+    MdToolbarModule,
+    MdButtonModule,
+    HttpModule,
+    AppRoutingModule,
+    DataTableModule,
+    SharedModule,
+    DataScrollerModule,
+    CheckboxModule,
+    ListboxModule,
+    ButtonModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,

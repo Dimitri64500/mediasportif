@@ -1,5 +1,7 @@
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
+<div class="ui-grid ui-grid-responsive ui-fluid">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-3">
 <p-fileUpload name="myfile[]" url="http://localhost:8088/upload" chooseLabel="Parcourir"
               uploadLabel="Upload"
               cancelLabel="Annuler"></p-fileUpload>
@@ -11,35 +13,92 @@
     </option>
   </select>
 </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-row">
+            <p>Catégorie(s)</p>
 
-<div class="column small-12 large-2">
-  <select name="scategories" [(ngModel)]="souscategories">
-    <option *ngFor="let soucategorie of souscategories" [ngValue]="soucategorie">
-      {{soucategorie.nom}}
-    </option>
-  </select>
+          <div class="ui-grid-row">
+            <select name="categories" [(ngModel)]="categories" (ngModelChange)="onChange($event)">
+              <option *ngFor="let categorie of categories" [ngValue]="categorie">
+                {{categorie.nom}}
+              </option>
+            </select>
+          </div>
+
+          <div class="ui-grid-row">
+            <select name="scategories" [(ngModel)]="souscategories">
+              <option *ngFor="let soucategorie of souscategories" [ngValue]="soucategorie">
+                {{soucategorie.nom}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ui-grid-row">
+          <button pButton type="button" (click)="count()" icon="fa-plus"></button>
+        </div>
+    </div>
+
+      <div class="ui-grid-row">
+        <p>Étiquette(s)</p>
+
+        <div class="ui-grid-row">
+          <input type="text"/>
+        </div>
+
+        <div class="ui-grid-row">
+          <button pButton type="button" (click)="count()" icon="fa-plus"></button>
+        </div>
+      </div>
+
+      <div class="ui-grid-row">
+        <p>Image à la une</p>
+
+      </div>
+
+      <div class="ui-grid-row">
+        <p>- {{checked}}</p>
+        <p-checkbox label="Article principal" [(ngModel)]="checked" binary="true"></p-checkbox>
+      </div>
+    </div>
+
+    <div class="ui-grid-col-6">
+      <div class="ui-grid-row">
+        <p>Ajouter un titre</p>
+        <input type="text" placeholder="Saisissez votre titre ici"/>
+      </div>
+
+      <div class="ui-grid-row">
+        <p>Ajouter un résumé</p>
+        <input type="text" placeholder="Saisissez votre résumé ici"/>
+      </div>
+
+      <div class="ui-grid-row">
+        <div class="editor">
+          <p-editor [(ngModel)]="text1" [style]="{'height':'400px'}"></p-editor>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-grid-col-3">
+      <p>Catégorie</p>
+      <div class="ui-grid-row">
+        <p-listbox [options]="cities" [(ngModel)]="selectedCity" multiple="multiple" checkbox="checkbox"></p-listbox>
+      </div>
+
+      <p>Étiquettes</p>
+      <div class="ui-grid-row">
+        <p-listbox [options]="cities" [(ngModel)]="selectedCity" multiple="multiple" checkbox="checkbox"></p-listbox>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ui-grid-row">
+    <button pButton type="button" label="Voir le visuel"></button>
+    <button pButton type="button" label="Enregistrer"></button>
+    <button pButton type="button" label="Publier"></button>
+  </div>
+
 </div>
-
-<div class="editor">
-  <p-editor [(ngModel)]="text1" [style]="{'height':'400px'}"></p-editor>
-</div>
-
-
-<!-- <p>Value: {{text1||'empty'}}</p>
-Pour afficher le texte : text1
-
-
-<h3>Custom Toolbar</h3>
-<p-editor [(ngModel)]="text2" [style]="{'height':'320px'}">
-  <p-header>
-        <span class="ql-formats">
-            <button class="ql-bold"></button>
-            <button class="ql-italic"></button>
-            <button class="ql-underline"></button>
-        </span>
-  </p-header>
-</p-editor>
-<p>Value: {{text2||'empty'}}</p>
-
-<button pButton type="button" label="Clear" icon="fa-close" (click)="text2=null"></button> -->
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from '../../Service/CategorieService';
 import {Categorie} from '../../Model/Categorie';
+import {SelectItem} from "primeng/primeng";
 
 @Component({
   selector: 'my-ajout-article',
@@ -14,13 +15,22 @@ export class AjoutArticleComponent implements OnInit {
   text1: string;
   id: number;
   valeurtmp: number;
+  checked: boolean = false;
+  cities: SelectItem[];
 
+  selectedCity: string;
 
   onChange(cat: Categorie) {
     this.valeurtmp = cat.id;
   }
-  constructor(
-    private CategorieService: CategoriesService ) { }
+  constructor(private CategorieService: CategoriesService ) {
+    this.cities = [];
+    this.cities.push({label: 'New York', value: 'New York'});
+    this.cities.push({label: 'Rome', value: 'Rome'});
+    this.cities.push({label: 'London', value: 'London'});
+    this.cities.push({label: 'Istanbul', value: 'Istanbul'});
+    this.cities.push({label: 'Paris', value: 'Paris'});
+  }
 
   getCategorie(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
@@ -32,5 +42,8 @@ export class AjoutArticleComponent implements OnInit {
   ngOnInit(): void {
     this.getCategorie();
     this.getSousCategorie(1);
+  }
+
+  count() {
   }
 }
