@@ -26,4 +26,9 @@ export class ArticleService {
       .toPromise()
       .then(res => <ArticleNote[]> res.json());
   }
+  getArticlesALaUne(): Promise<Article[]> {
+    return this.http.get('http://localhost:8088/api/articlesalaune')
+      .toPromise()
+      .then(res => <ArticleNote[]> res.json());
+  }
 }

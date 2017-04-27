@@ -2,10 +2,23 @@
 
 class MainController extends Controller
 {
-  function apiArticlesNotes()
-  {
+  function apiArticlesNotes(){
     $articles = new Article();
     $data = $articles->allArticlesAndNote();
+    $json = array();
+    foreach ($data as $row) {
+      $item = array();
+      foreach ($row as $key => $value) {
+        $item[$key] = $value;
+      }
+      array_push($json, $item);
+    }
+    echo json_encode($json);
+  }
+
+  function apiArticlesALaUne(){
+    $articles = new Article();
+    $data = $articles->getArticleALaUne();
     $json = array();
     foreach ($data as $row) {
       $item = array();

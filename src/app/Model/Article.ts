@@ -11,4 +11,5 @@ export class Article {
   status: Status;
   etiquette: string;
   activecomment: boolean;
+  imagealaune: string;
 }

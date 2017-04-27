@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+// Import Component form the angular core package
+import {Component} from '@angular/core';
+import {Image} from './image.interface';
+import {Router} from '@angular/router';
+import {ArticleService} from '../../Service/ArticleService';
+import {Article} from '../../Model/Article';
+
+
 
 // Component Decorator
 @Component({
@@ -8,14 +15,24 @@ import { Component } from '@angular/core';
 })
 
 export class CarouselComponent {
+  articles: Article[];
   images: any[];
+  constructor(private router: Router, private articleService: ArticleService) {}
 
   ngOnInit() {
-    this.images = [];
-    this.images.push({source: 'app/images/i1.jpg', alt: 'Description for Image 1', title: 'Title 1'});
-    this.images.push({source: 'app/images/i2.jpg', alt: 'Description for Image 2', title: 'Title 2'});
-    this.images.push({source: 'app/images/i3.jpg', alt: 'Description for Image 3', title: 'Title 3'});
-    this.images.push({source: 'app/images/i4.jpg', alt: 'Description for Image 4', title: 'Title 4'});
- }
-}
+    this.getArticlesALaUne();
+  }
 
+  getArticlesALaUne() {
+    this.images = [];
+    this.articleService.getArticlesALaUne().then(res => {this.articles = res;
+      this.articles.forEach(article => {
+        this.images.push({source: article.imagealaune, alt: article.resume, title: article.titre, url: article.url});
+      });
+    });
+  }
+  redirect(event: any) {
+    let url = event.image.url;
+    this.router.navigate(['/article', url]);
+  }
+}
