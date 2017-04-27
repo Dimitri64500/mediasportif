@@ -182,6 +182,10 @@ class MainController extends Controller
     }
   }
 
+function ajouterArticle(){
+    $article = new Article();
+    $article->addArticle();
+}
   function apiCategories()
   {
     $categories = new Categorie();
