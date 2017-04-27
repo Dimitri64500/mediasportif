@@ -25,6 +25,7 @@ import {CategoriesService} from './Service/CategorieService';
 import {EditorModule} from 'primeng/components/editor/editor';
 import {GalleriaModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
+import {UserService} from './Service/UserService';
 
 
 
@@ -44,7 +45,10 @@ import {FileUploadModule} from 'primeng/primeng';
     LiensComponent,
     PageArticleComponent,
     FooterComponent],
-  providers: [AuthenticationService, ArticleService, CategoriesService],
+  providers: [AuthenticationService,
+    ArticleService,
+    CategoriesService,
+  UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

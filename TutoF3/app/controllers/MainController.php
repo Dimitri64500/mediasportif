@@ -2,7 +2,8 @@
 
 class MainController extends Controller
 {
-  function apiArticlesNotes(){
+  function apiArticlesNotes()
+  {
     $articles = new Article();
     $data = $articles->allArticlesAndNote();
     $json = array();
@@ -13,7 +14,8 @@ class MainController extends Controller
       }
       array_push($json, $item);
     }
-    echo json_encode($json);  }
+    echo json_encode($json);
+  }
 
   function apiArticles()
   {
@@ -33,22 +35,12 @@ class MainController extends Controller
     echo json_encode($json);
   }
 
-  function apiArticle($dummyparam, $params)
+  function apiArticle($f3, $params)
   {
     $article = new Article();
-    // echo $params['URL'];
-    $data = $article->getByUrl($params['URL']);
+    $article->getByUrl($params['URL']);
 
-    $json = array();
-    foreach ($data as $row) {
-      $item = array();
-
-      foreach ($row as $key => $value) {
-        $item[$key] = $value;
-      }
-
-      array_push($json, $item);
-    }
+    echo json_encode($article->cast());
   }
 
   function addArticles()
@@ -83,6 +75,14 @@ class MainController extends Controller
     echo json_encode($json);
   }
 
+  function apiUser($f3, $params)
+  {
+    $user = new Utilisateur();
+    $user->getById($params['id']);
+    echo json_encode($user->cast());
+  }
+
+
   function test()
   {
 
@@ -92,16 +92,17 @@ class MainController extends Controller
       echo $_POST[$key];
     }
   }
+
   function apiCategories()
   {
     $categories = new Categorie();
     $data = $categories->all();
 
     $json = array();
-    foreach($data as $row) {
+    foreach ($data as $row) {
       $item = array();
 
-      foreach($row as $key => $value) {
+      foreach ($row as $key => $value) {
         $item[$key] = $value;
       }
 
@@ -109,7 +110,8 @@ class MainController extends Controller
     }
     echo json_encode($json);
   }
-  function apiSousCategories($f3,$params)
+
+  function apiSousCategories($f3, $params)
   {
     $id = $params['id'];
     $sousCategories = new SousCategorie();
@@ -117,10 +119,10 @@ class MainController extends Controller
     $data = $sousCategories->getSousCatById($id);
     echo "apres";
     $json = array();
-    foreach($data as $row) {
+    foreach ($data as $row) {
       $item = array();
 
-      foreach($row as $key => $value) {
+      foreach ($row as $key => $value) {
         $item[$key] = $value;
         echo $item[$key];
       }
@@ -130,7 +132,8 @@ class MainController extends Controller
     echo json_encode($json);
   }
 
-  function upload(){
+  function upload()
+  {
     $uploads_dir = '/uploads';
     $tmp_name = $_FILES['file_contents']['tmp_name'];
     $name = $_FILES['file_contents']['name'];

@@ -1,0 +1,21 @@
+<!--
+  TITRE  AUTEUR date
+  PHOTO TEXTE-->
+<div *ngIf="!article">
+  <h1>bibu</h1>
+</div>
+<div *ngIf="article">
+  <h1>{{article.titre}}</h1>
+  <div *ngIf="user">
+    <p>auteur : {{user.login}}</p>
+  </div>
+  <div *ngIf="!user">
+    <p>Auteur: PERSONNE FDP !</p>
+  </div>
+
+  <p>{{article.date}}</p>
+
+  <div [innerHTML]="article.texte"></div>
+</div>
+
+
