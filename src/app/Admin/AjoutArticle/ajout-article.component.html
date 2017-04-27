@@ -4,7 +4,6 @@
               uploadLabel="Upload"
               cancelLabel="Annuler"></p-fileUpload>
 
-
 <div class="column small-12 large-2">
   <select name="categories" [(ngModel)]="categories" (ngModelChange)="onChange($event)">
     <option *ngFor="let categorie of categories" [ngValue]="categorie">

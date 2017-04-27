@@ -115,16 +115,13 @@ class MainController extends Controller
   {
     $id = $params['id'];
     $sousCategories = new SousCategorie();
-    echo "avant";
     $data = $sousCategories->getSousCatById($id);
-    echo "apres";
     $json = array();
     foreach ($data as $row) {
       $item = array();
 
       foreach ($row as $key => $value) {
         $item[$key] = $value;
-        echo $item[$key];
       }
 
       array_push($json, $item);
