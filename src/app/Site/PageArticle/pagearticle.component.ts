@@ -19,16 +19,20 @@ export class PageArticleComponent implements OnInit {
   constructor(private articleService: ArticleService,
               private userService: UserService,
               private route: ActivatedRoute) {
+    this.onInit();
   }
 
   ngOnInit(): void {
+    // location.reload();
+  }
+
+  onInit(): void {
     this.route.params
       .switchMap((params: Params) => this.articleService.getArticle(params['url']))
       .subscribe(article => {
         this.article = article;
-        this.userService.getUser(this.article.idutilisateur).then(user => this.user = user);
+        this.userService.getUserbById(this.article.idutilisateur).then(user => this.user = user);
       });
-    // location.reload();
   }
 
   /*goBack(): void {

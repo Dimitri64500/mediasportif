@@ -1,21 +1,26 @@
-<!--
-  TITRE  AUTEUR date
-  PHOTO TEXTE-->
-<div *ngIf="!article">
-  <h1>bibu</h1>
+<div id="Titre">
+  <div *ngIf="!article">
+    <h1>Article non disponible</h1>
+  </div>
+  <div *ngIf="article">
+    <h1>{{article.titre}}</h1>
+    <p>Posté le {{article.date}}</p>
+    <div *ngIf="user">
+      <p>Auteur : {{user.prenom}} {{user.nom}}</p>
+      <a href="https://twitter.com/{{user.twitter}}"><i class="fa fa-twitter-square fa-3x"></i></a>
+    </div>
+    <div *ngIf="!user">
+      <p>Auteur: </p>
+    </div>
+  </div>
 </div>
-<div *ngIf="article">
-  <h1>{{article.titre}}</h1>
-  <div *ngIf="user">
-    <p>auteur : {{user.login}}</p>
+<div id="Corps">
+  <div *ngIf="!article">
+    <h1>Article non disponible</h1>
   </div>
-  <div *ngIf="!user">
-    <p>Auteur: PERSONNE FDP !</p>
+  <div *ngIf="article">
+    <div [innerHTML]="article.texte"></div>
   </div>
-
-  <p>{{article.date}}</p>
-
-  <div [innerHTML]="article.texte"></div>
 </div>
 
 

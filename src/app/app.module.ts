@@ -26,6 +26,7 @@ import {EditorModule} from 'primeng/components/editor/editor';
 import {GalleriaModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
 import {UserService} from './Service/UserService';
+import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
 
 
 
@@ -60,7 +61,8 @@ import {UserService} from './Service/UserService';
     TwitterComponent,
     LiensComponent,
     PageArticleComponent,
-    FooterComponent],
+    FooterComponent,
+    DroitsTvComponent],
   providers: [AuthenticationService,
     ArticleService,
     CategoriesService,

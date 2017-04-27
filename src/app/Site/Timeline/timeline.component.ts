@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, ElementRef} from '@angular/core';
 import {ArticleService} from '../../Service/ArticleService';
 import {ArticleNote} from '../../Model/ArticleNote';
 
@@ -8,18 +8,10 @@ import {ArticleNote} from '../../Model/ArticleNote';
   styleUrls: ['./timeline.component.scss']
 })
 
-export class TimelineComponent implements OnInit {
-  articlesNotes: ArticleNote[];
+export class TimelineComponent {
 
-  constructor(
-    private articleService: ArticleService ) { }
+  @Input('TimelineDatas') TimelineDatas: ArticleNote[];
 
-  getArticlesNotes(): void {
-    this.articleService.getArticlesNotes().then(res => this.articlesNotes = res);
-  }
-
-  ngOnInit(): void {
-    this.getArticlesNotes();
-  }
+  constructor(private el: ElementRef){}
 
 }

@@ -29,6 +29,14 @@ export class ArticleService {
   getArticlesALaUne(): Promise<Article[]> {
     return this.http.get('http://localhost:8088/api/articlesalaune')
       .toPromise()
+      .then(res => <Article[]> res.json());
+  }
+
+  getArticlesByCategorie(categorie: Number): Promise<ArticleNote[]> {
+    return this.http.get('http://localhost:8088/api/articlesbycategorie/' + categorie)
+      .toPromise()
       .then(res => <ArticleNote[]> res.json());
   }
+
+
 }
