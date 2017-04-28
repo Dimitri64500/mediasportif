@@ -17,8 +17,22 @@ class MainController extends Controller
   }
 
   function apiArticlesALaUne(){
+  $articles = new Article();
+  $data = $articles->getArticleALaUne();
+  $json = array();
+  foreach ($data as $row) {
+    $item = array();
+    foreach ($row as $key => $value) {
+      $item[$key] = $value;
+    }
+    array_push($json, $item);
+  }
+  echo json_encode($json);
+}
+/*
+  function apiArticlesEtiquettes(){
     $articles = new Article();
-    $data = $articles->getArticleALaUne();
+    $data = $articles->getArticleEtiquette();
     $json = array();
     foreach ($data as $row) {
       $item = array();
@@ -29,7 +43,7 @@ class MainController extends Controller
     }
     echo json_encode($json);
   }
-
+*/
   function apiArticles()
   {
     $articles = new Article();

@@ -1,5 +1,4 @@
 <?php
-
 class Article extends Model
 {
   public function __construct()
@@ -24,7 +23,11 @@ class Article extends Model
     $result = $this->db->exec('(SELECT titre,texte,resume,url,imagealaune FROM article WHERE alaune=true ORDER BY date LIMIT 8)');
     return $result;
   }
-
+  /*
+  public function getArticleEtiquette(){
+    $result = $this->db->exec('select distinct etiquette from article');
+    return $result;
+  }*/
   public function getById($id)
   {
     $this->load(array('id=?', $id));

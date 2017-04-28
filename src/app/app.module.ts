@@ -26,6 +26,7 @@ import {EditorModule} from 'primeng/components/editor/editor';
 import {GalleriaModule} from 'primeng/primeng';
 import {FileUploadModule, CheckboxModule} from 'primeng/primeng';
 import {UserService} from './Service/UserService';
+import {EtiquetteService} from './Service/EtiquetteService';
 import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
 
 
@@ -66,7 +67,8 @@ import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
   providers: [AuthenticationService,
     ArticleService,
     CategoriesService,
-  UserService],
+    UserService,
+    EtiquetteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
