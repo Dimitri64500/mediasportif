@@ -2,52 +2,55 @@
 <div class="ui-grid ui-grid-responsive ui-fluid container">
   <div class="ui-grid-row">
     <div class="ui-grid-col-3">
-        <div class="ui-grid-row">
-            <p>Catégorie(s)</p>
-        </div>
-        <div class="ui-grid-row">
-            <select name="categories" [(ngModel)]="categories" (ngModelChange)="onChange($event)">
-              <option *ngFor="let categorie of categories" [ngValue]="categorie">
-                {{categorie.nom}}
-              </option>
-            </select>
-        </div>
-        <div class="ui-grid-row">
-              <select name="scategories" [(ngModel)]="souscategories">
-                <option *ngFor="let soucategorie of souscategories" [ngValue]="soucategorie">
-                  {{soucategorie.nom}}
-                </option>
-              </select>
-        </div>
-        <div class="ui-grid-row">
-              <button pButton type="button" (click)="count()" icon="fa-plus"></button>
-        </div>
+      <div class="ui-grid-row">
+        <p>Catégorie(s)</p>
+      </div>
+      <div class="ui-grid-row">
+        <select name="categories" [(ngModel)]="categories" (ngModelChange)="onChange($event)">
+          <option *ngFor="let categorie of categories" [ngValue]="categorie">
+            {{categorie.nom}}
+          </option>
+        </select>
+      </div>
+      <div class="ui-grid-row">
+        <select name="scategories" [(ngModel)]="souscategories">
+          <option *ngFor="let soucategorie of souscategories" [ngValue]="soucategorie">
+            {{soucategorie.nom}}
+          </option>
+        </select>
+      </div>
+      <div class="ui-grid-row">
+        <button pButton type="button" (click)="count()" icon="fa-plus"></button>
+      </div>
 
-        <div class="ui-grid-row">
-          <p>Étiquette(s)</p>
-        </div>
+      <div class="ui-grid-row">
+        <p>Étiquette(s)</p>
+      </div>
 
-        <div  class="ui-grid-row">
-          <input #name />
-        </div>
+      <div  class="ui-grid-row">
+        <input #name />
+      </div>
 
-        <div class="ui-grid-row">
-          <button pButton type="button" (click)="add(name.value);" icon="fa-plus"></button>
-        </div>
+      <div class="ui-grid-row">
+        <button pButton type="button" (click)="add(name.value);" icon="fa-plus"></button>
+      </div>
 
+      <div class="ui-grid-row">
+        <p>Image à la une (683x384)</p>
         <div class="ui-grid-row">
-          <p>Image à la une</p>
+          <p-fileUpload name="myfile" url="http://localhost:8088/upload" chooseLabel="."
+                        uploadLabel="." (onUpload)="image($event)"
+                        cancelLabel="."></p-fileUpload>
         </div>
-        <div class="ui-grid-row">
-          <p-fileUpload name="myfile[]" url="http://localhost:8088/upload"
-                          chooseLabel="Parcourir"
-                          uploadLabel="Upload"
-                          cancelLabel="Annuler"></p-fileUpload>
-        </div>
+      </div>
 
-        <div class="ui-grid-row">
-          <p-checkbox label="Article principal" [(ngModel)]="checked" binary="true"></p-checkbox>
-        </div>
+      <div *ngIf="nomfichier" class="ui-grid-row">
+        <img class="imagealaune" src="{{nomfichier}}">
+      </div>
+
+      <div class="ui-grid-row">
+        <p-checkbox label="Article principal" [(ngModel)]="checked" binary="true"></p-checkbox>
+      </div>
     </div>
 
     <div class="ui-grid-col-6">
@@ -86,7 +89,7 @@
       <div class="ui-grid-row">
         <p>Selected Cities:
           <span *ngFor="let c of selectedEtiquettes" style="margin-right: 10px">{{c}}</span></p>
-          {{selectedEtiquettes}}
+        {{selectedEtiquettes}}
       </div>
 
       <div class="ui-grid-row">

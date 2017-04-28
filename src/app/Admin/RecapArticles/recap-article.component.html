@@ -15,16 +15,17 @@
           <div class="col-lg-3">
 
             <input id ="auteur" type="text" name="fname" placeholder="Auteur ..."><br>
-            <input id = "etiq" type="text" name="lname" placeholder="Etiquettes ..."><br>
+            <input id ="etiq" type="text" name="lname" placeholder="Etiquettes ..."><br>
             <input id="titre" type="text" name="lname" placeholder="Titre ..."><br>
 
           </div>
           <div class="col-lg-9">
             <p-dataTable [value]="articles">
-              <p-column field="id" header="ID" sortable=true></p-column>
-              <p-column field="idutilisateur" header="Idutilisateur"></p-column>
-              <p-column field="url" header="Brand"></p-column>
-              <p-column field="status" header="Color"></p-column>
+              <p-column field="id" header="N°" sortable=true></p-column>
+              <p-column field="date" header="Date" sortable=true></p-column>
+              <p-column field="user.nomcomplet" header="Auteur" sortable=true></p-column>
+              <p-column field="titre" header="Titre" sortable=true></p-column>
+              <p-column field="status" header="Publication"></p-column>
             </p-dataTable>
           </div>
         </div>

@@ -22,6 +22,7 @@ export class AjoutArticleComponent implements OnInit {
   cities: SelectItem[];
   ListEtiquette: SelectItem[];
   part: string[];
+  nomfichier:string;
   selectedCity: string;
   selectedEtiquettes: string;
 
@@ -56,21 +57,21 @@ export class AjoutArticleComponent implements OnInit {
     this.part = list.split(a);
     return this.part;
   }
-/*
-  delete(selectedEtiquettes: string): void {
-    let a: SelectItem;
-    this.part = [];
-    this.part = this.separate(selectedEtiquettes, ',');
-    for (let i = 0; i < this.part.length; i++) {
-      a.label = this.part[i];
-      a.value = this.part[i];
-      let index: number = this.ListEtiquette.indexOf(a);
-      if (index !== -1) {
-        this.ListEtiquette.splice(index, 1);
-      }
-    }
-  }
-*/
+  /*
+   delete(selectedEtiquettes: string): void {
+   let a: SelectItem;
+   this.part = [];
+   this.part = this.separate(selectedEtiquettes, ',');
+   for (let i = 0; i < this.part.length; i++) {
+   a.label = this.part[i];
+   a.value = this.part[i];
+   let index: number = this.ListEtiquette.indexOf(a);
+   if (index !== -1) {
+   this.ListEtiquette.splice(index, 1);
+   }
+   }
+   }
+   */
   getCategorie(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
   }
@@ -88,33 +89,39 @@ export class AjoutArticleComponent implements OnInit {
   count() {
   }
 
-/*
-  getEtiquettes(): void {
-    this.etiquetteService
-      .getEtiquettes()
-      .then(etiquettes => this.etiquettes = etiquettes);
-  }
+  /*
+   getEtiquettes(): void {
+   this.etiquetteService
+   .getEtiquettes()
+   .then(etiquettes => this.etiquettes = etiquettes);
+   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) {
-      return;
+   add(name: string): void {
+   name = name.trim();
+   if (!name) {
+   return;
+   }
+   this.etiquetteService.create(name)
+   .then(etiquette => {
+   this.etiquettes.push(etiquette);
+   this.selectedEtiquette = null;
+   });
+   }
+
+   delete(etiquette: Etiquette): void {
+   this.etiquetteService
+   .delete(etiquette.id)
+   .then(() => {
+   this.etiquettes = this.etiquettes.filter(h => h !== etiquette);
+   if (this.selectedEtiquette === etiquette) {
+   this.selectedEtiquette = null;
+   }
+   });
+   }*/
+  image(event: any) {
+    let file = event.xhr;
+    if (file.readyState == 4 && file.status == 200) {
+      this.nomfichier = "php/uploads/"+file.responseText;
     }
-    this.etiquetteService.create(name)
-      .then(etiquette => {
-        this.etiquettes.push(etiquette);
-        this.selectedEtiquette = null;
-      });
   }
-
-  delete(etiquette: Etiquette): void {
-    this.etiquetteService
-      .delete(etiquette.id)
-      .then(() => {
-        this.etiquettes = this.etiquettes.filter(h => h !== etiquette);
-        if (this.selectedEtiquette === etiquette) {
-          this.selectedEtiquette = null;
-        }
-      });
-  }*/
 }

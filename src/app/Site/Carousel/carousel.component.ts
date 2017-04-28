@@ -27,7 +27,7 @@ export class CarouselComponent {
     this.images = [];
     this.articleService.getArticlesALaUne().then(res => {this.articles = res;
       this.articles.forEach(article => {
-        this.images.push({source: article.imagealaune, alt: article.resume, title: article.titre, url: article.url});
+        this.images.push({source: '/php/uploads/'+article.imagealaune, alt: article.resume, title: article.titre, url: article.url});
       });
     });
   }

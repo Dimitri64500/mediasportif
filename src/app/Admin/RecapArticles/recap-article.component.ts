@@ -15,9 +15,10 @@ export class RecapArticleComponent implements OnInit {
     private articleService: ArticleService ) { }
 
   getArticles(): void {
-    this.articleService.getArticles().then(articles => this.articles = articles);
+    this.articleService.getArticlesWithAuthor().then(articles => this.articles = articles);
   }
   ngOnInit(): void {
     this.getArticles();
   }
+
 }
