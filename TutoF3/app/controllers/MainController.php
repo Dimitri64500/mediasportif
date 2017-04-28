@@ -138,6 +138,9 @@ class MainController extends Controller
         }
         $item = array();
         $item2 = array();
+        $item['idcategorie'] = $row['idcategorie'];
+        $item['nomcategorie'] = $row['nomcategorie'];
+        $item['urlcategorie'] = $row['urlcategorie'];
         $idCat = $row['idcategorie'];
       }
       $item2['idsouscategorie'] = $row['idsouscategorie'];
