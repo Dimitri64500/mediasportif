@@ -1,6 +1,9 @@
+import {SousCategorie} from './SousCategorie';
 
 export class Categorie {
-  id: number;
-  nom: string;
-  url: string;
+  idcategorie: number;
+  nomcategorie: string;
+  urlcategorie: string;
+  sousCategories: SousCategorie[];
 }
+

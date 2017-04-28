@@ -123,37 +123,31 @@ class MainController extends Controller
   function apiCategories()
   {
     $categories = new Categorie();
-    $data = $categories->all();
-
-    $json = array();
+    $data = $categories->allCategAndScateg();
+    $jsonCat = array();
+    $jsonSCat = array();
+    $item = array();
+    $item2 = array();
+    $idCat = 0;
     foreach ($data as $row) {
-      $item = array();
-
-      foreach ($row as $key => $value) {
-        $item[$key] = $value;
+      if ($idCat !== $row['idcategorie']) {
+        if ($idCat !== 0) {
+          $item['sousCategorie'] = $jsonSCat;
+          array_push($jsonCat, $item);
+          $jsonSCat = array();
+        }
+        $item = array();
+        $item2 = array();
+        $idCat = $row['idcategorie'];
       }
-
-      array_push($json, $item);
+      $item2['idsouscategorie'] = $row['idsouscategorie'];
+      $item2['nomsouscategorie'] = $row['nomsouscategorie'];
+      $item2['urlsouscategorie'] = $row['urlsouscategorie'];
+      array_push($jsonSCat, $item2);
     }
-    echo json_encode($json);
-  }
-
-  function apiSousCategories($f3, $params)
-  {
-    $id = $params['id'];
-    $sousCategories = new SousCategorie();
-    $data = $sousCategories->getSousCatById($id);
-    $json = array();
-    foreach ($data as $row) {
-      $item = array();
-
-      foreach ($row as $key => $value) {
-        $item[$key] = $value;
-      }
-
-      array_push($json, $item);
-    }
-    echo json_encode($json);
+    $item['sousCategorie'] = $jsonSCat;
+    array_push($jsonCat, $item);
+    echo json_encode($jsonCat);
   }
 
   // API qui va insérer une image à la une dans le dossier "uploads"

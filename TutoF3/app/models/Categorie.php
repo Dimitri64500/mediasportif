@@ -38,4 +38,8 @@ class Categorie extends Model
         $this->load(array('id=?',$id));
         $this->erase();
     }
+    public function allCategAndScateg()
+    {
+      return $this->db->exec('select ct.id as idcategorie, sc.id as idsouscategorie, ct.nom as nomcategorie, sc.nom as nomsouscategorie,ct.url as urlcategorie, sc.url as urlsouscategorie from souscategorie sc, categorie ct, categoriesouscategorie cat where cat.idcategorie = ct.id and cat.idsouscategorie = sc.id ORDER BY `ct`.`id` ASC');
+    }
 }
