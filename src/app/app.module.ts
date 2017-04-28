@@ -24,7 +24,7 @@ import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
 import {CategoriesService} from './Service/CategorieService';
 import {EditorModule} from 'primeng/components/editor/editor';
 import {GalleriaModule} from 'primeng/primeng';
-import {FileUploadModule} from 'primeng/primeng';
+import {FileUploadModule, CheckboxModule} from 'primeng/primeng';
 import {UserService} from './Service/UserService';
 import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
 
@@ -47,7 +47,7 @@ import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
     DataScrollerModule,
     CheckboxModule,
     ListboxModule,
-    ButtonModule],
+    ButtonModule, CheckboxModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,

@@ -17,7 +17,7 @@ export class DroitsTvComponent implements OnInit {
 
   articlesDroitsTV: ArticleNote[];
   categories : Categorie[];
-  selectedCat : Categorie ;
+  selectedCat : Categorie[] ;
   sousCategories :  SousCategorie[];
 
 
@@ -41,9 +41,8 @@ export class DroitsTvComponent implements OnInit {
   }*/
   getCategorie(): void {
     this.categorieService.getCategories().then(categories => {
-      this.categories = categories;
-      this.selectedCat =  this.categories.find(item => item.idcategorie === 1);
-      this.sousCategories = this.selectedCat.sousCategories;
+      this.categories = categories.filter(t => t.idcategorie==1);
+      this.sousCategories = this.categories[0].sousCategorie;
     });
   }
 

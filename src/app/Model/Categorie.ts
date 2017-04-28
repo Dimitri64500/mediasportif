@@ -4,6 +4,6 @@ export class Categorie {
   idcategorie: number;
   nomcategorie: string;
   urlcategorie: string;
-  sousCategories: SousCategorie[];
+  sousCategorie: SousCategorie[];
 }
 
