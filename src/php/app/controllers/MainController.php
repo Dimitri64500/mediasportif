@@ -2,6 +2,35 @@
 
 class MainController extends Controller
 {
+
+  function apiArticlesWithAuthor()
+  {
+    $articles = new Article();
+    $data = $articles->allArticlesWithAuthor();
+
+    $json = array();
+    foreach ($data as $row) {
+      $item = array();
+      $user=array();
+
+      foreach ($row as $key => $value) {
+        if($key == 'nom' || $key == 'prenom'){
+          $user[$key] = $value;
+        }
+        else
+          if($key == 'date'){
+            $item[$key] = $value;
+          }
+          else
+            $item[$key] = $value;
+      }
+      $user['nomcomplet']=$user['prenom']. ' ' . $user['nom'];
+      $item['user']=$user;
+      array_push($json, $item);
+    }
+    echo json_encode($json);
+  }
+
   function apiArticlesNotes(){
     $articles = new Article();
     $data = $articles->allArticlesAndNote();
@@ -29,7 +58,21 @@ class MainController extends Controller
     }
     echo json_encode($json);
   }
-
+  /*
+    function apiArticlesEtiquettes(){
+      $articles = new Article();
+      $data = $articles->getArticleEtiquette();
+      $json = array();
+      foreach ($data as $row) {
+        $item = array();
+        foreach ($row as $key => $value) {
+          $item[$key] = $value;
+        }
+        array_push($json, $item);
+      }
+      echo json_encode($json);
+    }
+  */
   function apiArticles()
   {
     $articles = new Article();
@@ -43,35 +86,6 @@ class MainController extends Controller
         $item[$key] = $value;
       }
 
-      array_push($json, $item);
-    }
-    echo json_encode($json);
-  }
-
-
-  function apiArticlesWithAuthor()
-  {
-    $articles = new Article();
-    $data = $articles->allArticlesWithAuthor();
-
-    $json = array();
-    foreach ($data as $row) {
-      $item = array();
-      $user=array();
-
-      foreach ($row as $key => $value) {
-        if($key == 'nom' || $key == 'prenom'){
-          $user[$key] = $value;
-        }
-        else
-          if($key == 'date'){
-            $item[$key] = $value;
-          }
-          else
-            $item[$key] = $value;
-      }
-      $user['nomcomplet']=$user['prenom']. ' ' . $user['nom'];
-      $item['user']=$user;
       array_push($json, $item);
     }
     echo json_encode($json);
@@ -124,6 +138,39 @@ class MainController extends Controller
     echo json_encode($user->cast());
   }
 
+  function apiArticleByCategorie($f3, $categorie)
+  {
+    $articles = new Article();
+    $data = $articles->getByCategorie($categorie['categorie']);
+    $jsonArticle = array();
+    $jsonSCat = array();
+    $item = array();
+    $item2 = array();
+    $idArticle = 0;
+    foreach ($data as $row) {
+      if ($idArticle !== $row['id']) {
+        if ($idArticle !== 0) {
+          $item['sousCategorie'] = $jsonSCat;
+          array_push($jsonArticle, $item);
+          $jsonSCat = array();
+        }
+        $item = array();
+        $item2 = array();
+        $item['id'] = $row['id'];
+        $item['titre'] = $row['titre'];
+        $item['url'] = $row['url'];
+        $item['date'] = $row['date'];
+        $idArticle = $row['id'];
+      }
+      $item2['idsouscategorie'] = $row['idsouscategorie'];
+      $item2['nomsouscategorie'] = $row['nomsouscategorie'];
+      $item2['urlsouscategorie'] = $row['urlsouscategorie'];
+      array_push($jsonSCat, $item2);
+    }
+    $item['sousCategorie'] = $jsonSCat;
+    array_push($jsonArticle, $item);
+    echo json_encode($jsonArticle);
+  }
 
   function test()
   {
@@ -138,37 +185,34 @@ class MainController extends Controller
   function apiCategories()
   {
     $categories = new Categorie();
-    $data = $categories->all();
-
-    $json = array();
+    $data = $categories->allCategAndScateg();
+    $jsonCat = array();
+    $jsonSCat = array();
+    $item = array();
+    $item2 = array();
+    $idCat = 0;
     foreach ($data as $row) {
-      $item = array();
-
-      foreach ($row as $key => $value) {
-        $item[$key] = $value;
+      if ($idCat !== $row['idcategorie']) {
+        if ($idCat !== 0) {
+          $item['sousCategorie'] = $jsonSCat;
+          array_push($jsonCat, $item);
+          $jsonSCat = array();
+        }
+        $item = array();
+        $item2 = array();
+        $item['idcategorie'] = $row['idcategorie'];
+        $item['nomcategorie'] = $row['nomcategorie'];
+        $item['urlcategorie'] = $row['urlcategorie'];
+        $idCat = $row['idcategorie'];
       }
-
-      array_push($json, $item);
+      $item2['idsouscategorie'] = $row['idsouscategorie'];
+      $item2['nomsouscategorie'] = $row['nomsouscategorie'];
+      $item2['urlsouscategorie'] = $row['urlsouscategorie'];
+      array_push($jsonSCat, $item2);
     }
-    echo json_encode($json);
-  }
-
-  function apiSousCategories($f3, $params)
-  {
-    $id = $params['id'];
-    $sousCategories = new SousCategorie();
-    $data = $sousCategories->getSousCatById($id);
-    $json = array();
-    foreach ($data as $row) {
-      $item = array();
-
-      foreach ($row as $key => $value) {
-        $item[$key] = $value;
-      }
-
-      array_push($json, $item);
-    }
-    echo json_encode($json);
+    $item['sousCategorie'] = $jsonSCat;
+    array_push($jsonCat, $item);
+    echo json_encode($jsonCat);
   }
 
   // API qui va insérer une image à la une dans le dossier "uploads"
