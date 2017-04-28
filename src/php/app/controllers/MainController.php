@@ -101,7 +101,7 @@ class MainController extends Controller
 
   function addArticles()
   {
-    $articles = new Article($this->db);
+    $articles = new Article();
     $articles->add();
   }
 
@@ -113,7 +113,7 @@ class MainController extends Controller
 
   function apiNotes()
   {
-    $notes = new Note($this->db);
+    $notes = new Note();
     $data = $notes->all();
 
     $json = array();
@@ -184,7 +184,7 @@ class MainController extends Controller
 
 function ajouterArticle(){
     $article = new Article();
-    $article->addArticle();
+    echo $article->addArticle();
 }
   function apiCategories()
   {

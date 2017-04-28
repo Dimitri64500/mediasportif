@@ -65,8 +65,16 @@ ORDER BY (article.id))');
     var_dump($this->save());
   }
   public function addArticle(){
-    $result = $this->db->exec('insert into article values("null","yow","hola","hiyayo","2015-09-04 15:23:56","1","www.eedfdfdfd","active","fdfdf","1")');
+    $f3=Base::instance();
+    $this->parse_body();
+    $this->copyFrom('INPUT');
+    echo json_encode($f3->get('INPUT'));
+    $this->save();
   }
+
+
+
+
   public function edit($id)
   {
     $this->load(array('id=?', $id));

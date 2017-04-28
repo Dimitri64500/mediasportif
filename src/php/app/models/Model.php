@@ -27,9 +27,10 @@ class Model extends DB\SQL\Mapper{
     $f3=Base::instance();
     $head=getallheaders();
     switch (true) {
-      case (strpos($head['Content-Type'],'application/json')!==false):
+      case (strpos($head['Content-Type'],'application/json')!==false):{
         $input=json_decode($f3->get('BODY'));
         break;
+      }
       case (strpos($head['Content-Type'],'application/x-www-form-urlencoded;charset=utf-8')!==false):
         parse_str($f3->get('BODY'),$input);
         break;
