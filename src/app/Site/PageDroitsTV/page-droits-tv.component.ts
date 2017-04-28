@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../Service/ArticleService';
-import {Article} from '../../Model/Article';
-import {TimelineComponent} from '../Timeline/timeline.component';
 import {ArticleNote} from '../../Model/ArticleNote';
+import {Categorie} from '../../Model/Categorie';
+import {CategoriesService} from '../../Service/CategorieService';
+import {SelectItem} from 'primeng/primeng';
 
 
 @Component({
@@ -14,28 +15,31 @@ import {ArticleNote} from '../../Model/ArticleNote';
 export class DroitsTvComponent implements OnInit {
 
   articlesDroitsTV: ArticleNote[];
+  souscategoriesBack: Categorie[];
+  souscategoriesFront: SelectItem[];
 
-  constructor(private articleService: ArticleService) {
+  selectedSousCat: string[];
+
+  constructor(private articleService: ArticleService,
+              private categorieService: CategoriesService) {
   }
 
   getArticlesByCategorie(categorie: Number): void {
     this.articleService.getArticlesByCategorie(categorie).then(res => this.articlesDroitsTV = res);
   }
 
+  getSousCategorieByCategorie(categorie: number): void {
+    this.categorieService.getSousCategories(categorie).then(res => {
+      this.souscategoriesBack = res;
+      this.souscategoriesFront = [];
+      this.souscategoriesBack.forEach(sousc => this.souscategoriesFront.push({label: sousc.nom , value: sousc.id}));
+    });
+
+  }
+
   ngOnInit(): void {
-    //  this.getArticlesByCategorie(1);
-    // MOCK :
-    this.articlesDroitsTV = [{
-      titre: 'titre1',
-      texte: 'blable1',
-      date: undefined,
-      url: 'blabla',
-      souscategorie: [{
-        idsouscategorie: 1,
-        nomsouscategorie: 'blabla1',
-        urlsouscategorie: 'blablba2'
-      }]
-    }];
+    this.getArticlesByCategorie(1);
+    this.getSousCategorieByCategorie(1);
   }
 
 }

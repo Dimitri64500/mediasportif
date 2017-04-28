@@ -99,15 +99,34 @@ class MainController extends Controller
   {
     $articles = new Article();
     $data = $articles->getByCategorie($categorie['categorie']);
-    $json = array();
+    $jsonArticle = array();
+    $jsonSCat = array();
+    $item = array();
+    $item2 = array();
+    $idArticle = 0;
     foreach ($data as $row) {
-      $item = array();
-      foreach ($row as $key => $value) {
-        $item[$key] = $value;
+      if ($idArticle !== $row['id']) {
+        if ($idArticle !== 0) {
+          $item['sousCategorie'] = $jsonSCat;
+          array_push($jsonArticle, $item);
+          $jsonSCat = array();
+        }
+        $item = array();
+        $item2 = array();
+        $item['id'] = $row['id'];
+        $item['titre'] = $row['titre'];
+        $item['url'] = $row['url'];
+        $item['date'] = $row['date'];
+        $idArticle = $row['id'];
       }
-      array_push($json, $item);
+      $item2['idsouscategorie'] = $row['idsouscategorie'];
+      $item2['nomsouscategorie'] = $row['nomsouscategorie'];
+      $item2['urlsouscategorie'] = $row['urlsouscategorie'];
+      array_push($jsonSCat, $item2);
     }
-    echo json_encode($json);
+    $item['sousCategorie'] = $jsonSCat;
+    array_push($jsonArticle, $item);
+    echo json_encode($jsonArticle);
   }
 
   function test()
