@@ -16,7 +16,16 @@
   </div>
 </div>
 
-<div *ngIf="souscategoriesFront">
+<!--div >
   <p-listbox [options]="souscategoriesFront" [(ngModel)]="selectedSousCat" multiple="multiple" checkbox="checkbox">
   </p-listbox>
+</div-->
+<div>
+  <ul>
+    <li *ngFor="let cat of sousCategories">
+      <md-checkbox>{{ cat }}</md-checkbox>
+    </li>
+  </ul>
+
 </div>
+

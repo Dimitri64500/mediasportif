@@ -4,6 +4,7 @@ import {ArticleNote} from '../../Model/ArticleNote';
 import {Categorie} from '../../Model/Categorie';
 import {CategoriesService} from '../../Service/CategorieService';
 import {SelectItem} from 'primeng/primeng';
+import {SousCategorie} from "../../Model/SousCategorie";
 
 
 @Component({
@@ -15,10 +16,12 @@ import {SelectItem} from 'primeng/primeng';
 export class DroitsTvComponent implements OnInit {
 
   articlesDroitsTV: ArticleNote[];
-  souscategoriesBack: Categorie[];
-  souscategoriesFront: SelectItem[];
+  categories : Categorie[];
+  selectedCat : Categorie ;
+  sousCategories :  SousCategorie[];
 
-  selectedSousCat: string[];
+
+  //selectedSousCat: string[];
 
   constructor(private articleService: ArticleService,
               private categorieService: CategoriesService) {
@@ -28,18 +31,25 @@ export class DroitsTvComponent implements OnInit {
     this.articleService.getArticlesByCategorie(categorie).then(res => this.articlesDroitsTV = res);
   }
 
-  getSousCategorieByCategorie(categorie: number): void {
-    this.categorieService.getSousCategories(categorie).then(res => {
+ /* getSousCategorieByCategorie(categorie: number): void {
+    this.categorieService.getCategories().then(res => {
       this.souscategoriesBack = res;
       this.souscategoriesFront = [];
       this.souscategoriesBack.forEach(sousc => this.souscategoriesFront.push({label: sousc.nom , value: sousc.id}));
     });
 
+  }*/
+  getCategorie(): void {
+    this.categorieService.getCategories().then(categories => {
+      this.categories = categories;
+      this.selectedCat =  this.categories.find(item => item.idcategorie === 1);
+      this.sousCategories = this.selectedCat.sousCategories;
+    });
   }
 
   ngOnInit(): void {
     this.getArticlesByCategorie(1);
-    this.getSousCategorieByCategorie(1);
+    this.getCategorie();
   }
 
 }
