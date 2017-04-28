@@ -31,9 +31,9 @@ export class DroitsTvComponent implements OnInit {
       date: undefined,
       url: 'blabla',
       souscategorie: [{
-        id: 1,
-        nom: 'blabla1',
-        url: 'blablba2'
+        idsouscategorie: 1,
+        nomsouscategorie: 'blabla1',
+        urlsouscategorie: 'blablba2'
       }]
     }];
   }

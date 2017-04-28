@@ -11,7 +11,6 @@ import {SelectItem} from "primeng/primeng";
 
 export class AjoutArticleComponent implements OnInit {
   categories: Categorie[]; // liste pour récuperer tous les catégories
-  souscategories: Categorie[];
   text1: string;
   id: number;
   valeurtmp: number;
@@ -21,7 +20,7 @@ export class AjoutArticleComponent implements OnInit {
   selectedCity: string;
 
   onChange(cat: Categorie) {
-    this.valeurtmp = cat.id;
+    this.valeurtmp = cat.idcategorie;
   }
   constructor(private CategorieService: CategoriesService ) {
     this.cities = [];
@@ -35,13 +34,9 @@ export class AjoutArticleComponent implements OnInit {
   getCategorie(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
   }
-  /*instancié le momoent qu on change la catégorie*/
-  getSousCategorie(id: number): void {
-    this.CategorieService.getSousCategories(id).then(souscategories => this.souscategories = souscategories);
-  }
+
   ngOnInit(): void {
     this.getCategorie();
-    this.getSousCategorie(1);
   }
 
   count() {

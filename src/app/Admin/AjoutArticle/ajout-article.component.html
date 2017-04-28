@@ -18,19 +18,11 @@
           <div class="ui-grid-row">
             <select name="categories" [(ngModel)]="categories" (ngModelChange)="onChange($event)">
               <option *ngFor="let categorie of categories" [ngValue]="categorie">
-                {{categorie.nom}}
+                {{categorie.nomcategorie}}
               </option>
             </select>
           </div>
 
-          <div class="ui-grid-row">
-            <select name="scategories" [(ngModel)]="souscategories">
-              <option *ngFor="let soucategorie of souscategories" [ngValue]="soucategorie">
-                {{soucategorie.nom}}
-              </option>
-            </select>
-          </div>
-        </div>
 
         <div class="ui-grid-row">
           <button pButton type="button" (click)="count()" icon="fa-plus"></button>
