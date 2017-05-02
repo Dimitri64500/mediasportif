@@ -39,7 +39,7 @@ export class AjoutArticleComponent implements OnInit {
   }
 
   onChange(cat: Categorie) {
-    this.valeurtmp = cat.id;
+    this.valeurtmp = cat.idcategorie;
   }
 
   add(name: string): void {
