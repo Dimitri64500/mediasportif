@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from '../../Service/CategorieService';
+import {ArticleService} from '../../Service/ArticleService';
 import {Categorie} from '../../Model/Categorie';
 import {SousCategorie} from '../../Model/SousCategorie';
 import {SelectItem} from 'primeng/primeng';
-// import {EtiquetteService} from '../../Service/EtiquetteService';
-
-// const LISTETIQUETTES: Etiquette[] = [];
-
 @Component({
   selector: 'my-ajout-article',
   templateUrl: './ajout-article.component.html',
@@ -15,23 +12,23 @@ import {SelectItem} from 'primeng/primeng';
 
 export class AjoutArticleComponent implements OnInit {
   categories: Categorie[]; // liste pour récuperer tous les catégories
+  souscategories: Categorie[];
   selectedCategorie: Categorie;
   selectedSousCategorie: SousCategorie;
   checked: boolean = false;
   listCategorieSousCategorie: SelectItem[];
   ListEtiquette: SelectItem[];
   part: string[];
-  nomfichier:string;
+  nomfichier: string;
   selectedCategorieSousCategorie: string;
   selectedEtiquettes: string;
 
-
-  constructor(private CategorieService: CategoriesService,
+  constructor( private CategorieService: CategoriesService, private articleservice: ArticleService
               /*private etiquetteService: EtiquetteService*/) {
+
     this.listCategorieSousCategorie = [];
     this.ListEtiquette = [];
   }
-
   onChangeCategorie(cat: Categorie) {
     this.selectedCategorie = cat;
     this.selectedSousCategorie = null;
@@ -96,7 +93,6 @@ export class AjoutArticleComponent implements OnInit {
   getCategorie(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
   }
-
   ngOnInit(): void {
     this.getCategorie();
   }
@@ -104,7 +100,6 @@ export class AjoutArticleComponent implements OnInit {
   count() {
   }
 
-  /*
    getEtiquettes(): void {
    this.etiquetteService
    .getEtiquettes()
@@ -136,7 +131,7 @@ export class AjoutArticleComponent implements OnInit {
   image(event: any) {
     let file = event.xhr;
     if (file.readyState == 4 && file.status == 200) {
-      this.nomfichier = "php/uploads/"+file.responseText;
+      this.nomfichier = 'php/uploads/' + file.responseText;
     }
   }
 }
