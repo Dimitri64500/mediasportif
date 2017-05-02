@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from '../../Service/CategorieService';
 import {Categorie} from '../../Model/Categorie';
+import {SousCategorie} from '../../Model/SousCategorie';
 import {SelectItem} from 'primeng/primeng';
 // import {EtiquetteService} from '../../Service/EtiquetteService';
 
@@ -14,32 +15,26 @@ import {SelectItem} from 'primeng/primeng';
 
 export class AjoutArticleComponent implements OnInit {
   categories: Categorie[]; // liste pour récuperer tous les catégories
-  souscategories: Categorie[];
-  text1: string;
-  id: number;
-  valeurtmp: number;
+  selectedCategorie: Categorie;
+  selectedSousCategorie: SousCategorie;
   checked: boolean = false;
-  cities: SelectItem[];
+  listCategorieSousCategorie: SelectItem[];
   ListEtiquette: SelectItem[];
   part: string[];
   nomfichier:string;
-  selectedCity: string;
+  selectedCategorieSousCategorie: string;
   selectedEtiquettes: string;
 
 
   constructor(private CategorieService: CategoriesService,
               /*private etiquetteService: EtiquetteService*/) {
-    this.cities = [];
+    this.listCategorieSousCategorie = [];
     this.ListEtiquette = [];
-    this.cities.push({label: 'New York', value: 'New York'});
-    this.cities.push({label: 'Rome', value: 'Rome'});
-    this.cities.push({label: 'London', value: 'London'});
-    this.cities.push({label: 'Istanbul', value: 'Istanbul'});
-    this.cities.push({label: 'Paris', value: 'Paris'});
   }
 
-  onChange(cat: Categorie) {
-    this.valeurtmp = cat.idcategorie;
+  onChangeCategorie(cat: Categorie) {
+    this.selectedCategorie = cat;
+    this.selectedSousCategorie = null;
   }
 
   add(name: string): void {
@@ -50,6 +45,32 @@ export class AjoutArticleComponent implements OnInit {
     for (let i = 0; i < this.part.length; i++) {
       this.ListEtiquette.push({label: this.part[i], value: this.part[i]});
     }
+  }
+
+  addCategorie(nameCategorie: string, nameSousCategorie: string, idCatSousCat: number): void{
+    let nomCategorieEtNomSousCategorie = nameCategorie.concat(' -> '+nameSousCategorie);
+    if(this.listCategorieSousCategorie.length != 0){
+      if(this.listCategorieSousCategorie.every(catSousCat => catSousCat.value !== idCatSousCat)){
+        this.listCategorieSousCategorie.push({label:nomCategorieEtNomSousCategorie, value: idCatSousCat });
+      }
+    }else {
+      this.listCategorieSousCategorie.push({label:nomCategorieEtNomSousCategorie, value: idCatSousCat });
+    }
+
+  }
+  deleteCategorie(selectedCatSousCat: string[]): void {
+    var index = -1;
+    selectedCatSousCat.forEach(catSousCatToDelete => {
+      for(var i = 0, len = this.listCategorieSousCategorie.length; i < len; i++) {
+        if (this.listCategorieSousCategorie[i].value === catSousCatToDelete) {
+          index = i;
+          break;
+        }
+      }
+      if (index > -1) {
+        this.listCategorieSousCategorie.splice(index, 1);
+      }
+     })
   }
 
   separate(list: string, a: string): string[] {
@@ -76,14 +97,8 @@ export class AjoutArticleComponent implements OnInit {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
   }
 
-  /*instancié le momoent qu on change la catégorie*/
-  getSousCategorie(id: number): void {
-    this.CategorieService.getSousCategories(id).then(souscategories => this.souscategories = souscategories);
-  }
-
   ngOnInit(): void {
     this.getCategorie();
-    this.getSousCategorie(1);
   }
 
   count() {

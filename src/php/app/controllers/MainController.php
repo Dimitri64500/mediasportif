@@ -212,6 +212,7 @@ function ajouterArticle(){
       $item2['idsouscategorie'] = $row['idsouscategorie'];
       $item2['nomsouscategorie'] = $row['nomsouscategorie'];
       $item2['urlsouscategorie'] = $row['urlsouscategorie'];
+      $item2['idCatSousCat'] = $row['idCatSousCat'];
       array_push($jsonSCat, $item2);
     }
     $item['sousCategorie'] = $jsonSCat;

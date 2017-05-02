@@ -6,21 +6,21 @@
         <p>Catégorie(s)</p>
       </div>
       <div class="ui-grid-row">
-        <select name="categories" [(ngModel)]="categories" (ngModelChange)="onChange($event)">
+        <select name="categories" [(ngModel)]="selectedCategorie" (ngModelChange)="onChangeCategorie($event)">
           <option *ngFor="let categorie of categories" [ngValue]="categorie">
-            {{categorie.nom}}
+            {{categorie.nomcategorie}}
+          </option>
+        </select>
+      </div>
+      <div class="ui-grid-row" *ngIf="selectedCategorie">
+        <select name="sous-categories" [(ngModel)]="selectedSousCategorie">
+          <option *ngFor="let sousCategorie of selectedCategorie.sousCategorie" [ngValue]="sousCategorie" >
+            {{sousCategorie.nomsouscategorie}}
           </option>
         </select>
       </div>
       <div class="ui-grid-row">
-        <select name="scategories" [(ngModel)]="souscategories">
-          <option *ngFor="let soucategorie of souscategories" [ngValue]="soucategorie">
-            {{soucategorie.nom}}
-          </option>
-        </select>
-      </div>
-      <div class="ui-grid-row">
-        <button pButton type="button" (click)="count()" icon="fa-plus"></button>
+        <button pButton type="button" [disabled]="!selectedSousCategorie" (click)="addCategorie(selectedCategorie.nomcategorie, selectedSousCategorie.nomsouscategorie, selectedSousCategorie.idCatSousCat)" icon="fa-plus"></button>
       </div>
 
       <div class="ui-grid-row">
@@ -78,8 +78,9 @@
     <div class="ui-grid-col-3">
       <p>Catégorie</p>
       <div class="ui-grid-row">
-        <p-listbox [options]="cities" [(ngModel)]="selectedCity" multiple="multiple" checkbox="checkbox"></p-listbox>
+        <p-listbox [options]="listCategorieSousCategorie" [(ngModel)]="selectedCategorieSousCategorie" multiple="multiple" checkbox="checkbox"></p-listbox>
       </div>
+      <button pButton type="button" (click)="deleteCategorie(selectedCategorieSousCategorie)" icon="fa-close"></button>
 
       <p>Étiquettes</p>
       <div class="ui-grid-row">
