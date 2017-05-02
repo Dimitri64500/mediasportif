@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from '../../Service/CategorieService';
+import {ArticleService} from '../../Service/ArticleService';
 import {Categorie} from '../../Model/Categorie';
 import {SelectItem} from 'primeng/primeng';
+
 // import {EtiquetteService} from '../../Service/EtiquetteService';
 
 // const LISTETIQUETTES: Etiquette[] = [];
@@ -22,12 +24,12 @@ export class AjoutArticleComponent implements OnInit {
   cities: SelectItem[];
   ListEtiquette: SelectItem[];
   part: string[];
-  nomfichier:string;
+  nomfichier: string;
   selectedCity: string;
   selectedEtiquettes: string;
 
 
-  constructor(private CategorieService: CategoriesService,
+  constructor( private CategorieService: CategoriesService, private articleservice: ArticleService
               /*private etiquetteService: EtiquetteService*/) {
     this.cities = [];
     this.ListEtiquette = [];
@@ -41,6 +43,7 @@ export class AjoutArticleComponent implements OnInit {
   onChange(cat: Categorie) {
     this.valeurtmp = cat.idcategorie;
   }
+
 
   add(name: string): void {
     name = name.trim();
@@ -89,6 +92,13 @@ export class AjoutArticleComponent implements OnInit {
   count() {
   }
 
+  ////////////////////////////////////////
+  callApi(titre: string, texte: string, resume: string, date: string, idutilisateur: number, url: string, status: string,
+          etiquette: string, activecomment: number) {
+    alert('callapi : ' + titre);
+    this.articleservice.addArticles(titre, texte, resume, date, idutilisateur, url, status, etiquette, activecomment);
+  }
+
   /*
    getEtiquettes(): void {
    this.etiquetteService
@@ -120,8 +130,8 @@ export class AjoutArticleComponent implements OnInit {
    }*/
   image(event: any) {
     let file = event.xhr;
-    if (file.readyState == 4 && file.status == 200) {
-      this.nomfichier = "php/uploads/"+file.responseText;
+    if (file.readyState === 4 && file.status === 200) {
+      this.nomfichier = 'php/uploads/' + file.responseText;
     }
   }
 }
