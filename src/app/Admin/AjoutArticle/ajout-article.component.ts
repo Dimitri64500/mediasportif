@@ -32,8 +32,7 @@ export class AjoutArticleComponent implements OnInit {
   selectedCategorieSousCategorie: string;
   selectedEtiquettes: string;
 
-  constructor(private CategorieService: CategoriesService, private articleservice: ArticleService
-              /*private etiquetteService: EtiquetteService*/) {
+  constructor(private CategorieService: CategoriesService, private articleservice: ArticleService) {
 
     this.listCategorieSousCategorie = [];
     this.ListEtiquette = [];
@@ -44,21 +43,42 @@ export class AjoutArticleComponent implements OnInit {
     this.selectedSousCategorie = null;
   }
 
-  /*add(name: string): void {
+  separate(list: string, a: string): string[] {
+    this.part = [];
+    this.part = list.split(a);
+    return this.part;
+  }
+
+  add(name: string): void {
     name = name.trim();
-    if (!name) {
-      return;
+    if (!name) { return; }
+    this.part = [];
+    this.part = this.separate(name, ';');
+    for (let i = 0; i < this.part.length; i++) {
+      if (this.exist(this.part[i]) !== -1 && this.exist(this.part[i]) !== undefined) {
+        alert('L etiquette ' + this.part[i] + ' existe deja.');
+      } else {
+        this.ListEtiquette.push({label: this.part[i], value: this.part[i]});
+      }
     }
-    this.etiquetteService.create(name)
-      .then(etiquette => {
-        this.etiquettes.push(etiquette);
-        this.selectedEtiquette = null;
-      });
-  }*/
+  }
+
+  exist(a: string): number {
+    let index: number;
+    for (let i = 0; i < this.ListEtiquette.length; i++) {
+      if (this.ListEtiquette[i].value === a) {
+        index = i;
+        i = this.ListEtiquette.length;
+      } else {
+        index = -1;
+      }
+    }
+    return index;
+  }
 
   addCategorie(nameCategorie: string, nameSousCategorie: string, idCatSousCat: number): void {
     let nomCategorieEtNomSousCategorie = nameCategorie.concat(' -> ' + nameSousCategorie);
-    if (this.listCategorieSousCategorie.length != 0) {
+    if (this.listCategorieSousCategorie.length !== 0) {
       if (this.listCategorieSousCategorie.every(catSousCat => catSousCat.value !== idCatSousCat)) {
         this.listCategorieSousCategorie.push({label: nomCategorieEtNomSousCategorie, value: idCatSousCat});
       }
@@ -83,11 +103,21 @@ export class AjoutArticleComponent implements OnInit {
     })
   }
 
-  separate(list: string, a: string): string[] {
-    this.part = [];
-    this.part = list.split(a);
-    return this.part;
-  }
+
+
+   delete(selectedEti: string[]): void {
+     let a: SelectItem;
+     for (let i = 0; i < selectedEti.length; i++) {
+       a = {label: selectedEti[i], value: selectedEti[i]};
+       let index: number;
+
+       index = this.exist(a.value);
+
+         if (index !== -1) {
+          this.ListEtiquette.splice(index, 1);
+         }
+     }
+   }
 
   getCategorie(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
@@ -138,23 +168,6 @@ export class AjoutArticleComponent implements OnInit {
       this.article.alaune,
       this.article.imagealaune);
   }
-
-  /*getEtiquettes(): void {
-    this.etiquetteService
-      .getEtiquettes()
-      .then(etiquettes => this.etiquettes = etiquettes);
-  }
-
-  delete(etiquette: Etiquette): void {
-    this.etiquetteService
-      .delete(etiquette.id)
-      .then(() => {
-        this.etiquettes = this.etiquettes.filter(h => h !== etiquette);
-        if (this.selectedEtiquette === etiquette) {
-          this.selectedEtiquette = null;
-        }
-      });
-  }*/
 
   image(event: any) {
     let file = event.xhr;

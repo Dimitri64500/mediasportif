@@ -88,13 +88,7 @@
       </div>
 
       <div class="ui-grid-row">
-        <p>Selected Cities:
-          <span *ngFor="let c of selectedEtiquettes" style="margin-right: 10px">{{c}}</span></p>
-        {{selectedEtiquettes}}
-      </div>
-
-      <div class="ui-grid-row">
-        <button class="delete" (click)="delete(selectedEtiquettes); $event.stopPropagation()">x</button>
+        <button pButton type="button" [disabled]="!selectedEtiquettes" (click)="delete(selectedEtiquettes)" icon="fa-close"></button>
       </div>
 
     </div>
