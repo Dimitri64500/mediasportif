@@ -127,7 +127,7 @@ export class AjoutArticleComponent implements OnInit {
    this.selectedEtiquette = null;
    }
    });
-   }*/
+   }
   image(event: any) {
     let file = event.xhr;
     if (file.readyState == 4 && file.status == 200) {
