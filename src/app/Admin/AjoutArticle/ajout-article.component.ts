@@ -89,9 +89,9 @@ export class AjoutArticleComponent implements OnInit {
   }
 
   deleteCategorie(selectedCatSousCat: string[]): void {
-    var index = -1;
+    let index = -1;
     selectedCatSousCat.forEach(catSousCatToDelete => {
-      for (var i = 0, len = this.listCategorieSousCategorie.length; i < len; i++) {
+      for (let i = 0, len = this.listCategorieSousCategorie.length; i < len; i++) {
         if (this.listCategorieSousCategorie[i].value === catSousCatToDelete) {
           index = i;
           break;
@@ -100,7 +100,7 @@ export class AjoutArticleComponent implements OnInit {
       if (index > -1) {
         this.listCategorieSousCategorie.splice(index, 1);
       }
-    })
+    });
   }
 
 
