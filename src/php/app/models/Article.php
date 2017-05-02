@@ -64,14 +64,15 @@ ORDER BY (article.id))');
     $this->copyFrom('POST.nom');
     var_dump($this->save());
   }
+
+
   public function addArticle(){
     $f3=Base::instance();
     $this->parse_body();
     $this->copyFrom('INPUT');
-    echo json_encode($f3->get('INPUT'));
+    $id = $this->db->lastInsertId();
     $this->save();
   }
-
 
 
 

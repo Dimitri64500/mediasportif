@@ -37,19 +37,19 @@
 
       <div class="ui-grid-row">
         <p>Image à la une (683x384)</p>
+      </div>
         <div class="ui-grid-row">
           <p-fileUpload name="myfile" url="http://localhost:8088/upload" chooseLabel="."
                         uploadLabel="." (onUpload)="image($event)"
                         cancelLabel="."></p-fileUpload>
         </div>
-      </div>
 
-      <div *ngIf="nomfichier" class="ui-grid-row">
-        <img class="imagealaune" src="{{nomfichier}}">
+      <div *ngIf="this.article.imagealaune" class="ui-grid-row">
+        <img class="imagealaune" src="{{this.article.imagealaune}}">
       </div>
 
       <div class="ui-grid-row">
-        <p-checkbox label="Article principal" [(ngModel)]="checked" binary="true"></p-checkbox>
+        <p-checkbox label="Article principal" (ngModelChange)="booleantotinyint()" [(ngModel)]="temp.alaune" binary="true"></p-checkbox>
       </div>
     </div>
 
@@ -58,19 +58,19 @@
         <p>Ajouter un titre</p>
       </div>
       <div class="ui-grid-row">
-        <input type="text" placeholder="Saisissez votre titre ici"/>
+        <input [(ngModel)]="article.titre" type="text" placeholder="Saisissez votre titre ici"/>
       </div>
 
       <div class="ui-grid-row">
         <p>Ajouter un résumé</p>
       </div>
       <div class="ui-grid-row">
-        <input type="text" placeholder="Saisissez votre résumé ici"/>
+        <input [(ngModel)]="article.resume" type="text" placeholder="Saisissez votre résumé ici"/>
       </div>
 
       <div class="ui-grid-row">
         <div class="editor">
-          <p-editor [(ngModel)]="text1" [style]="{'height':'400px'}"></p-editor>
+          <p-editor [(ngModel)]="article.texte" [style]="{'height':'400px'}"></p-editor>
         </div>
       </div>
     </div>
@@ -102,8 +102,8 @@
 
   <div class="ui-grid-row">
     <button pButton type="button" label="Voir le visuel"></button>
-    <button pButton type="button" (click)="callApi('a','aa','aaa','2015-09-17 15:23:56','1','a','active','a','1')" label="Enregistrer"></button>
-    <button pButton type="button" label="Publier"></button>
+    <button pButton type="button" (click)="callApi('brouillon')" label="Enregistrer"></button>
+    <button pButton type="button" (click)="callApi('active')" label="Publier"></button>
   </div>
 
 </div>

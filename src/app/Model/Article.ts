@@ -10,8 +10,9 @@ export class Article {
   url: string;
   status: Status;
   etiquette: string;
-  activecomment: boolean;
+  activecomment: number;
   imagealaune: string;
+  alaune:number;
   user:Auteur;
 }
 

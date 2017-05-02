@@ -107,7 +107,7 @@ class MainController extends Controller
 
   function addCategorie()
   {
-    $categorie = new Categorie($this->db);
+    $categorie = new Categorie();
     $categorie->add();
   }
 
@@ -184,7 +184,8 @@ class MainController extends Controller
 
 function ajouterArticle(){
     $article = new Article();
-    echo $article->addArticle();
+    $article->addArticle();
+    echo $article->get('_id');
 }
   function apiCategories()
   {
