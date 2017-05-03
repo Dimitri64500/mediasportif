@@ -22,15 +22,22 @@ class ArticleCategorieSousCategorie extends Model
     {
       $this->parse_body();
       $this->copyfrom('INPUT');
-        $this->save();
+      $this->save();
+    }
+
+    public function addACSC($idarticle,$categoriesouscategorie)
+    {
+      foreach ($categoriesouscategorie as $key => $value) {
+        $this->db->exec('INSERT INTO articlecategoriesouscategorie(idarticle,idcategoriesouscategorie) VALUES (?, ?)',array(1=>$idarticle,2=>$value));
+      }
     }
 
     public function edit($id)
     {
-        $this->load(array('id=?',$id));
+      $this->load(array('id=?',$id));
       $this->parse_body();
       $this->copyfrom('INPUT');
-        $this->update();
+      $this->update();
     }
 
     public function delete($id)

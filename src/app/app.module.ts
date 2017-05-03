@@ -28,11 +28,13 @@ import {FileUploadModule} from 'primeng/primeng';
 import {UserService} from './Service/UserService';
 import {EtiquetteService} from './Service/EtiquetteService';
 import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
-
+import {MdSnackBarModule} from '@angular/material';
+import {MessagesModule} from 'primeng/primeng';
 
 
 @NgModule({
-  imports: [EditorModule,
+  imports: [MessagesModule,
+    EditorModule,
     FileUploadModule,
     GalleriaModule,
     FormsModule,
@@ -48,7 +50,8 @@ import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
     DataScrollerModule,
     CheckboxModule,
     ListboxModule,
-    ButtonModule, CheckboxModule],
+    ButtonModule,
+    MdSnackBarModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,

@@ -13,12 +13,12 @@ export class ArticleService {
 
   constructor(private http: Http) {}
   addArticles(titre: string, texte: string, resume: string, idutilisateur: number, url: string, status: string,
-              etiquette: string, activecomment: number, alaune : number, imagealaune : string): Promise<Article> {
+              etiquette: string, activecomment: number, alaune : number, imagealaune : string, souscategorie : any[]): Promise<Article> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     return this.http.post('http://localhost:8088/api/ajouterArticle',
       JSON.stringify({titre: titre, texte: texte, resume: resume, idutilisateur : idutilisateur,
-        url: url, status: status, etiquette: etiquette, activecomment: activecomment, alaune: alaune, imagealaune : imagealaune}), options)
+        url: url, status: status, etiquette: etiquette, activecomment: activecomment, alaune: alaune, imagealaune : imagealaune, souscategorie: souscategorie}), options)
       .toPromise()
       .then(res => { console.log(res.json().data); return res.json().data as Article; } )
       .catch(this.handleError);

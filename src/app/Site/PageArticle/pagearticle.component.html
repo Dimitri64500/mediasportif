@@ -1,29 +1,26 @@
 <my-menu></my-menu>
 <div class="wrapper">
 </div>
+
+
 <div id="Titre">
   <div *ngIf="!article">
     <h1>Article non disponible</h1>
   </div>
   <div *ngIf="article">
-    <h1>{{article.titre}}</h1>
-    <p>Posté le {{article.date}}</p>
-    <div *ngIf="user">
-      <p>Auteur : {{user.prenom}} {{user.nom}}</p>
-      <a href="https://twitter.com/{{user.twitter}}"><i class="fa fa-twitter-square fa-3x"></i></a>
-    </div>
-    <div *ngIf="!user">
-      <p>Auteur: </p>
+    <div *ngIf="article || Status" [hidden]="article.status.toString() != Status[0]">
+      <h1>{{article.titre}}</h1>
+      <p>Posté le {{article.date}}</p>
+      <div *ngIf="user">
+        <p>Auteur : {{user.prenom}} {{user.nom}}</p>
+        <a href="https://twitter.com/{{user.twitter}}"><i class="fa fa-twitter-square fa-3x"></i></a>
+      </div>
+      <div *ngIf="!user">
+        <p>Auteur: </p>
+      </div>
+      <div id="Corps">
+        <div [innerHTML]="article.texte"></div>
+      </div>
     </div>
   </div>
 </div>
-<div id="Corps">
-  <div *ngIf="!article">
-    <h1>Article non disponible</h1>
-  </div>
-  <div *ngIf="article">
-    <div [innerHTML]="article.texte"></div>
-  </div>
-</div>
-
-

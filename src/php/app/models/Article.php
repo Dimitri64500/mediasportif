@@ -70,11 +70,8 @@ ORDER BY (article.id))');
     $f3=Base::instance();
     $this->parse_body();
     $this->copyFrom('INPUT');
-    $id = $this->db->lastInsertId();
     $this->save();
   }
-
-
 
   public function edit($id)
   {

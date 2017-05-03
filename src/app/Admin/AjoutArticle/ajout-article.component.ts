@@ -3,13 +3,9 @@ import {CategoriesService} from '../../Service/CategorieService';
 import {ArticleService} from '../../Service/ArticleService';
 import {Categorie} from '../../Model/Categorie';
 import {SousCategorie} from '../../Model/SousCategorie';
-import {SelectItem} from 'primeng/primeng';
+import {Message, SelectItem} from 'primeng/primeng';
 import {Article} from "../../Model/Article";
-
-// import {EtiquetteService} from '../../Service/EtiquetteService';
-
-// const LISTETIQUETTES: Etiquette[] = [];
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'my-ajout-article',
   templateUrl: './ajout-article.component.html',
@@ -18,22 +14,19 @@ import {Article} from "../../Model/Article";
 
 export class AjoutArticleComponent implements OnInit {
   categories: Categorie[]; // liste pour récuperer tous les catégories
-  souscategories: Categorie[];
   selectedCategorie: Categorie;
   selectedSousCategorie: SousCategorie;
   article: Article = new Article;
   temp = {alaune: false};
   id: number;
-  valeurtmp: number;
-  checked: boolean = false;
   listCategorieSousCategorie: SelectItem[];
   ListEtiquette: SelectItem[];
   part: string[];
   selectedCategorieSousCategorie: string;
   selectedEtiquettes: string;
+  msgs: Message[] = [];
 
-  constructor(private CategorieService: CategoriesService, private articleservice: ArticleService) {
-
+  constructor(private router: Router,private CategorieService: CategoriesService, private articleservice: ArticleService) {
     this.listCategorieSousCategorie = [];
     this.ListEtiquette = [];
   }
@@ -51,12 +44,13 @@ export class AjoutArticleComponent implements OnInit {
 
   add(name: string): void {
     name = name.trim();
-    if (!name) { return; }
+    if (!name) {
+      return;
+    }
     this.part = [];
     this.part = this.separate(name, ';');
     for (let i = 0; i < this.part.length; i++) {
       if (this.exist(this.part[i]) !== -1 && this.exist(this.part[i]) !== undefined) {
-        alert('L etiquette ' + this.part[i] + ' existe deja.');
       } else {
         this.ListEtiquette.push({label: this.part[i], value: this.part[i]});
       }
@@ -104,20 +98,19 @@ export class AjoutArticleComponent implements OnInit {
   }
 
 
+  delete(selectedEti: string[]): void {
+    let a: SelectItem;
+    for (let i = 0; i < selectedEti.length; i++) {
+      a = {label: selectedEti[i], value: selectedEti[i]};
+      let index: number;
 
-   delete(selectedEti: string[]): void {
-     let a: SelectItem;
-     for (let i = 0; i < selectedEti.length; i++) {
-       a = {label: selectedEti[i], value: selectedEti[i]};
-       let index: number;
+      index = this.exist(a.value);
 
-       index = this.exist(a.value);
-
-         if (index !== -1) {
-          this.ListEtiquette.splice(index, 1);
-         }
-     }
-   }
+      if (index !== -1) {
+        this.ListEtiquette.splice(index, 1);
+      }
+    }
+  }
 
   getCategorie(): void {
     this.CategorieService.getCategories().then(categories => this.categories = categories);
@@ -133,11 +126,29 @@ export class AjoutArticleComponent implements OnInit {
   booleantotinyint() {
     this.temp.alaune ? this.article.alaune = 0 : this.article.alaune = 1;
   }
-
+  show() {
+    this.msgs.push({severity:'warn', summary:'Vous devez renseigner tous les champs.'});
+    setTimeout(() => {
+      this.hide();
+    },3000);
+  }
+  hide() {
+    this.msgs = [];
+  }
   callApi(status: string) {
-    if (!this.article.titre) {
+    if (!this.article.titre || !this.article.resume || !this.article.texte || (this.listCategorieSousCategorie.length<=0)
+      || (this.article.alaune==1 && !this.article.imagealaune)) {
+      this.show();
       return;
     }
+    this.article.etiquette = "";
+    for (let i = 0; i < this.ListEtiquette.length; i++) {
+      if(i == this.ListEtiquette.length-1)
+        this.article.etiquette += this.ListEtiquette[i].value;
+      else
+        this.article.etiquette += this.ListEtiquette[i].value +  ";";
+    }
+
     let r = this.article.titre.toLowerCase();
     r = r.replace(new RegExp(/\s/g), "-");
     r = r.replace(new RegExp(/[àáâãäå]/g), "a");
@@ -155,7 +166,10 @@ export class AjoutArticleComponent implements OnInit {
     this.article.url = r;
     this.article.idutilisateur = 1;//TODO
     this.article.activecomment = 1;//TODO
-
+    let sousCategories = [];
+    for (let i = 0, len = this.listCategorieSousCategorie.length; i < len; i++) {
+      sousCategories.push(this.listCategorieSousCategorie[i].value);
+    }
     this.articleservice.addArticles(
       this.article.titre,
       this.article.texte,
@@ -166,7 +180,13 @@ export class AjoutArticleComponent implements OnInit {
       this.article.etiquette,
       this.article.activecomment,
       this.article.alaune,
-      this.article.imagealaune);
+      this.article.imagealaune,
+      sousCategories
+    )
+      .then(res =>
+      {
+        this.router.navigate(['/admin/recaparticle']);
+      });
   }
 
   image(event: any) {
