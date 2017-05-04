@@ -20,8 +20,32 @@
     </div>
   </div>
 </div>
+<div class="col-md-7 col-md-offset-2" id="modal-login" style="display:none;width:50%;height: 50%;" >
+
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('modal-login').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="/php/uploads/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+          <label><b>Login</b></label>
+          <input type="text" placeholder="Login" name="uname" required>
+
+          <label><b>Mot de passe</b></label>
+          <input type="password" placeholder="Mot de passe" name="psw" required>
+
+          <button type="submit">Se connecter</button>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('modal-login').style.display='none'" class="cancelbtn">Annuler</button>
+        </div>
+      </form>
+    </div>
 <!-- COMPOSANT MENU ?-->
 <!--<my-menu [hidden]="">
 </my-menu>-->
 <router-outlet></router-outlet>
+
 
