@@ -28,10 +28,11 @@ import {FileUploadModule} from 'primeng/primeng';
 import {UserService} from './Service/UserService';
 import {EtiquetteService} from './Service/EtiquetteService';
 import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
-import {FiltreArticle} from './Site/PageDroitsTV/filtre-sous-cat';
+import {FiltreArticle} from './Site/filtre-sous-cat';
 
 import {MdSnackBarModule} from '@angular/material';
 import {MessagesModule} from 'primeng/primeng';
+import {MediaFrancaisComponent} from "./Site/PageMediaFrancais/page-media-francais.component";
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import {MessagesModule} from 'primeng/primeng';
     PageArticleComponent,
     FooterComponent,
     DroitsTvComponent,
+  MediaFrancaisComponent,
   FiltreArticle],
   providers: [AuthenticationService,
     ArticleService,

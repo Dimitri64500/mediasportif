@@ -7,6 +7,7 @@ import {AjoutProgrammeComponent} from './Admin/AjoutProgramme/ajout-programme.co
 import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.component';
 import {PageArticleComponent} from "./Site/PageArticle/pagearticle.component";
 import {DroitsTvComponent} from "./Site/PageDroitsTV/page-droits-tv.component";
+import {MediaFrancaisComponent} from './Site/PageMediaFrancais/page-media-francais.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminAccueilComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'admin/ajoutprogramme', component: AjoutProgrammeComponent },
   { path: 'article/:url', component : PageArticleComponent},
   { path: 'Droits-TV', component: DroitsTvComponent},
+  { path: 'Media-francais', component: MediaFrancaisComponent},
   { path: '', component: AccueilComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' }

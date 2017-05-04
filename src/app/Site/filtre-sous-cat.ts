@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {ArticleNote} from '../../Model/ArticleNote';
+import {ArticleNote} from '../Model/ArticleNote';
 import {forEach} from "@angular/router/src/utils/collection";
 
 @Pipe({
