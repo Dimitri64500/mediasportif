@@ -3,6 +3,10 @@
   display: block;
 
 }
+
+.img{
+  max-width: 100%;
+}
 .one{
   width: 8.3333333333333%;
 }
@@ -85,6 +89,9 @@
 
 .menu-button{
   margin-right: 1%;
+}
+body{
+  background: #f0f0f0;
 }
 .menu div{
   display: block;
