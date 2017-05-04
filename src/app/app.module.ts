@@ -32,7 +32,8 @@ import {FiltreArticle} from './Site/filtre-sous-cat';
 
 import {MdSnackBarModule} from '@angular/material';
 import {MessagesModule} from 'primeng/primeng';
-import {MediaFrancaisComponent} from "./Site/PageMediaFrancais/page-media-francais.component";
+import {MediaFrancaisComponent} from './Site/PageMediaFrancais/page-media-francais.component';
+import {MediaEtrangersComponent} from './Site/PageMediaEtrangers/page-media-etrangers.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import {MediaFrancaisComponent} from "./Site/PageMediaFrancais/page-media-franca
     FooterComponent,
     DroitsTvComponent,
   MediaFrancaisComponent,
-  FiltreArticle],
+  FiltreArticle,
+    MediaEtrangersComponent],
   providers: [AuthenticationService,
     ArticleService,
     CategoriesService,

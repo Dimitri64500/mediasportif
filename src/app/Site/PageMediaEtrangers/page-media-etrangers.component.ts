@@ -5,25 +5,24 @@ import {Categorie} from '../../Model/Categorie';
 import {CategoriesService} from '../../Service/CategorieService';
 import {SelectItem} from 'primeng/primeng';
 import {SousCategorie} from '../../Model/SousCategorie';
-import {FiltreArticle} from '../filtre-sous-cat'
+import {FiltreArticle} from '../filtre-sous-cat';
 
 
 
 
 @Component({
-  selector: 'my-pagemediafrançais',
-  templateUrl: './page-media-francais.component.html',
-  styleUrls: ['./page-media-francais.component.scss'],
-
+  selector: 'my-pagemediaetrangers',
+  templateUrl: './page-media-etrangers.component.html',
+  styleUrls: ['./page-media-etrangers.component.scss'],
 })
 
 @NgModule({
   declarations: [FiltreArticle],
 })
 
-export class MediaFrancaisComponent implements OnInit {
+export class MediaEtrangersComponent implements OnInit {
 
-  articlesMediaFrancais: ArticleNote[];
+  articlesMediaEtrangers: ArticleNote[];
   categories: Categorie[];
   sousCategories: SousCategorie[];
   sousCategoriesFront: SelectItem[];
@@ -36,7 +35,7 @@ export class MediaFrancaisComponent implements OnInit {
 
   getCategorie(): void {
     this.categorieService.getCategories().then(categories => {
-      this.categories = categories.filter(t => t.idcategorie == 2);
+      this.categories = categories.filter(t => t.idcategorie == 3);
       this.sousCategories = this.categories[0].sousCategorie;
 
       // mise en tableau des sous-catégories pour affichage.
@@ -52,13 +51,13 @@ export class MediaFrancaisComponent implements OnInit {
     this.articleService.getArticlesByCategorie(categorie)
       .then(
         res => {
-          this.articlesMediaFrancais = res;
+          this.articlesMediaEtrangers = res;
         });
   }
 
   ngOnInit(): void {
     this.getCategorie();
-    this.getArticlesByCategorie(2);
+    this.getArticlesByCategorie(3);
   }
 
 }
