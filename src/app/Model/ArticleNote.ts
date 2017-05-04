@@ -6,5 +6,6 @@ export class ArticleNote {
   texte: string;
   date: Date;
   url: string;
-  souscategorie: SousCategorie[];
+  sousCategorie: SousCategorie[];
 }
+

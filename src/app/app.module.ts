@@ -28,6 +28,8 @@ import {FileUploadModule} from 'primeng/primeng';
 import {UserService} from './Service/UserService';
 import {EtiquetteService} from './Service/EtiquetteService';
 import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
+import {FiltreArticle} from './Site/PageDroitsTV/filtre-sous-cat';
+
 import {MdSnackBarModule} from '@angular/material';
 import {MessagesModule} from 'primeng/primeng';
 
@@ -48,9 +50,9 @@ import {MessagesModule} from 'primeng/primeng';
     DataTableModule,
     SharedModule,
     DataScrollerModule,
-    CheckboxModule,
     ListboxModule,
     ButtonModule,
+    CheckboxModule,
     MdSnackBarModule],
   declarations: [AppComponent,
     TimelineComponent,
@@ -66,7 +68,8 @@ import {MessagesModule} from 'primeng/primeng';
     LiensComponent,
     PageArticleComponent,
     FooterComponent,
-    DroitsTvComponent],
+    DroitsTvComponent,
+  FiltreArticle],
   providers: [AuthenticationService,
     ArticleService,
     CategoriesService,
