@@ -1,28 +1,29 @@
-<div class="ui-grid ui-grid-responsive ui-fluid container">
-  <my-menu></my-menu>
-  <div class="wrapper">
+<my-menu></my-menu>
+<div class="wrapper">
+</div>
+<div id="Titre">
+  <div *ngIf="!article">
+    <h1>Article non disponible</h1>
   </div>
-
-
-  <div id="Titre" class="article">
-    <div *ngIf="!article">
-      <h1>Article non disponible</h1>
+  <div *ngIf="article">
+    <h1>{{article.titre}}</h1>
+    <p>Posté le {{article.date}}</p>
+    <div *ngIf="user">
+      <p>Auteur : {{user.prenom}} {{user.nom}}</p>
+      <a href="https://twitter.com/{{user.twitter}}"><i class="fa fa-twitter-square fa-3x"></i></a>
     </div>
-    <div *ngIf="article">
-      <div *ngIf="article || Status" [hidden]="article.status.toString() != Status[0]">
-        <h1>{{article.titre}}</h1>
-        <p>Posté le {{article.date}}</p>
-        <div *ngIf="user">
-          <p>Auteur : {{user.prenom}} {{user.nom}}
-          <a href="https://twitter.com/{{user.twitter}}"><i class="fa fa-twitter-square fa-2x"></i></a></p>
-        </div>
-        <div *ngIf="!user">
-          <p>Auteur: </p>
-        </div>
-        <div>
-          <div [innerHTML]="article.texte" class="corps"></div>
-        </div>
-      </div>
+    <div *ngIf="!user">
+      <p>Auteur: </p>
     </div>
   </div>
 </div>
+<div id="Corps">
+  <div *ngIf="!article">
+    <h1>Article non disponible</h1>
+  </div>
+  <div *ngIf="article">
+    <div [innerHTML]="article.texte"></div>
+  </div>
+</div>
+
+

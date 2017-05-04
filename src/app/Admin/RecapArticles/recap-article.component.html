@@ -1,37 +1,30 @@
-<h1>Récapitulatif des articles</h1>
-
-
-
-    <div class="container" id="conteneur1">
-      <div class="row" id="row1">
-        <div class="row"id ="head" >
-          <div class="col-lg-10">
-          </div>
-          <div class="col-lg-2">
-            <button type="button" class="btn btn-primary">Ajouter</button>
-          </div>
-        </div>
-        <div class="row" id = milieu>
-          <div class="col-lg-3">
-
-            <input id ="auteur" type="text" name="fname" placeholder="Auteur ..."><br>
-            <input id ="etiq" type="text" name="lname" placeholder="Etiquettes ..."><br>
-            <input id="titre" type="text" name="lname" placeholder="Titre ..."><br>
-
-          </div>
-          <div class="col-lg-9">
-            <p-dataTable [value]="articles">
-              <p-column field="id" header="N°" sortable=true></p-column>
-              <p-column field="date" header="Date" sortable=true></p-column>
-              <p-column field="user.nomcomplet" header="Auteur" sortable=true></p-column>
-              <p-column field="titre" header="Titre" sortable=true></p-column>
-              <p-column field="status" header="Publication"></p-column>
-            </p-dataTable>
-          </div>
-        </div>
-    <div class="row" id="foot">
-      <button type="button" class="btn btn-primary">Supprimer</button>
-      <button type="button" class="btn btn-primary">Modifier</button>
+<p-confirmDialog width="425"></p-confirmDialog>
+<div class="ui-grid ui-grid-responsive ui-fluid container">
+  <h1>Récapitulatif des articles</h1>
+  <div class="ui-g">
+    <div class="ui-g-10"></div>
+    <div class="ui-g-2">
+      <button type="button" class="btn btn-primary">Ajouter</button>
     </div>
+  </div>
+  <div class="ui-g">
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+    </div>
+    <p-dataTable [value]="articles" [(selection)]="selectedArticles" dataKey="id" [globalFilter]="gb" *ngIf="articles">
+      <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+      <p-column field="id" header="N°" sortable=true [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="titre" header="Titre" sortable=true [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="user.nomcomplet" header="Auteur" sortable=true [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="date" header="Date" sortable=true [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="etiquette" header="Etiquette" sortable=true [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="status" header="Publication" [filter]="true" filterPlaceholder="Search"></p-column>
+    </p-dataTable>
+  </div>
+
+  <div class="ui-g" *ngIf="selectedArticles">
+    <button pButton type="button" (click)="modifyArticles(selectedArticles)" [disabled]="!isSelectedOne(selectedArticles)" label="Modifier"></button>
+    <button pButton type="button" (click)="deleteArticles(selectedArticles)" [disabled]="!isSelected(selectedArticles)" label="Supprimer"></button>
   </div>
 </div>

@@ -8,7 +8,7 @@ class Article extends Model
 
   public function allArticlesWithAuthor()
   {
-    $result = $this->db->exec('(SELECT a.id, a.titre, a.date, a.status, u.prenom, u.nom FROM utilisateur u, article a WHERE u.id=a.idutilisateur ORDER BY date DESC)');
+    $result = $this->db->exec('(SELECT a.id, a.titre, a.date, a.status, a.etiquette, u.prenom, u.nom FROM utilisateur u, article a WHERE u.id=a.idutilisateur ORDER BY date DESC)');
     return $result;
   }
 
@@ -70,8 +70,10 @@ ORDER BY (article.id))');
     $f3=Base::instance();
     $this->parse_body();
     $this->copyFrom('INPUT');
+    $id = $this->db->lastInsertId();
     $this->save();
   }
+
 
   public function edit($id)
   {
@@ -79,6 +81,7 @@ ORDER BY (article.id))');
     $this->copyFrom('POST');
     $this->update();
   }
+
 
   public function delete($id)
   {

@@ -12,13 +12,14 @@ export class ArticleService {
   creds: string;
 
   constructor(private http: Http) {}
+
   addArticles(titre: string, texte: string, resume: string, idutilisateur: number, url: string, status: string,
-              etiquette: string, activecomment: number, alaune : number, imagealaune : string, souscategorie : any[]): Promise<Article> {
+              etiquette: string, activecomment: number, alaune : number, imagealaune : string): Promise<Article> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     return this.http.post('http://localhost:8088/api/ajouterArticle',
       JSON.stringify({titre: titre, texte: texte, resume: resume, idutilisateur : idutilisateur,
-        url: url, status: status, etiquette: etiquette, activecomment: activecomment, alaune: alaune, imagealaune : imagealaune, souscategorie: souscategorie}), options)
+        url: url, status: status, etiquette: etiquette, activecomment: activecomment, alaune: alaune, imagealaune : imagealaune}), options)
       .toPromise()
       .then(res => { console.log(res.json().data); return res.json().data as Article; } )
       .catch(this.handleError);
@@ -54,6 +55,17 @@ export class ArticleService {
       .toPromise()
       .then(res => <ArticleNote[]> res.json());
   }
+
+  deleteArticles(tableArticles: number[]): Promise<any> {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post('http://localhost:8088/api/supprimerArticle',
+      JSON.stringify(tableArticles), options)
+      .toPromise()
+      .then(res => { } )
+      .catch(this.handleError);
+  }
+
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;

@@ -1,4 +1,3 @@
-<p-messages [value]="msgs"></p-messages>
 <div class="ui-grid ui-grid-responsive ui-fluid container">
   <div class="ui-grid-row">
     <div class="ui-grid-col-3">
@@ -70,7 +69,7 @@
 
       <div class="ui-grid-row">
         <div class="editor">
-          <p-editor [(ngModel)]="article.texte" [style]="{'height':'500px'}"></p-editor>
+          <p-editor [(ngModel)]="article.texte" [style]="{'height':'400px'}"></p-editor>
         </div>
       </div>
     </div>
@@ -99,5 +98,6 @@
     <button pButton type="button" (click)="callApi('brouillon')" label="Enregistrer"></button>
     <button pButton type="button" (click)="callApi('active')" label="Publier"></button>
   </div>
+
 </div>
 

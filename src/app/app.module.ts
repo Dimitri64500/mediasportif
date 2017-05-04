@@ -1,5 +1,6 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent}  from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MdGridListModule, MdToolbarModule, MdButtonModule} from '@angular/material';
@@ -18,7 +19,8 @@ import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.componen
 import {TwitterComponent} from './Site/Twitter/twitter.component';
 import {LiensComponent} from './Site/Liens/liens.component';
 import {FooterComponent} from './Site/Footer/footer.component';
-import {DataTableModule, SharedModule, DataScrollerModule, CheckboxModule, ListboxModule, ButtonModule} from 'primeng/primeng';
+import {DataTableModule, SharedModule, DataScrollerModule, CheckboxModule} from 'primeng/primeng';
+import {ListboxModule, ButtonModule, ConfirmDialogModule, ConfirmationService, MessagesModule, GrowlModule} from 'primeng/primeng';
 import {ArticleService} from './Service/ArticleService';
 import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
 import {CategoriesService} from './Service/CategorieService';
@@ -28,17 +30,11 @@ import {FileUploadModule} from 'primeng/primeng';
 import {UserService} from './Service/UserService';
 import {EtiquetteService} from './Service/EtiquetteService';
 import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
-import {FiltreArticle} from './Site/filtre-sous-cat';
 
-import {MdSnackBarModule} from '@angular/material';
-import {MessagesModule} from 'primeng/primeng';
-import {MediaFrancaisComponent} from './Site/PageMediaFrancais/page-media-francais.component';
-import {MediaEtrangersComponent} from './Site/PageMediaEtrangers/page-media-etrangers.component';
 
 
 @NgModule({
-  imports: [MessagesModule,
-    EditorModule,
+  imports: [EditorModule,
     FileUploadModule,
     GalleriaModule,
     FormsModule,
@@ -52,10 +48,14 @@ import {MediaEtrangersComponent} from './Site/PageMediaEtrangers/page-media-etra
     DataTableModule,
     SharedModule,
     DataScrollerModule,
+    CheckboxModule,
     ListboxModule,
     ButtonModule,
-    CheckboxModule,
-    MdSnackBarModule],
+    ConfirmDialogModule,
+    MessagesModule,
+    GrowlModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule],
   declarations: [AppComponent,
     TimelineComponent,
     LoginComponent,
@@ -70,15 +70,13 @@ import {MediaEtrangersComponent} from './Site/PageMediaEtrangers/page-media-etra
     LiensComponent,
     PageArticleComponent,
     FooterComponent,
-    DroitsTvComponent,
-  MediaFrancaisComponent,
-  FiltreArticle,
-    MediaEtrangersComponent],
+    DroitsTvComponent],
   providers: [AuthenticationService,
     ArticleService,
     CategoriesService,
     UserService,
-    EtiquetteService],
+    EtiquetteService,
+    ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
