@@ -7,7 +7,7 @@ class Controller
 
     function beforeroute()
     {
-      /*  if($this->f3->get('SESSION.utilisateur') === null ) {
+    /*  if($this->f3->get('token') === null ) {
             $this->f3->reroute('/login');
             exit;
         }*/

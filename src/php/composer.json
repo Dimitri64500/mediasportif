@@ -7,7 +7,8 @@
         }
     ],
     "require": {
-    	"bcosca/fatfree": "3.5.0"
+    	"bcosca/fatfree": "^3.6",
+        "firebase/php-jwt": "^4.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.5"

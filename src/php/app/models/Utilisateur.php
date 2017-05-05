@@ -22,6 +22,7 @@ class Utilisateur extends Model
   public function getByLogin($login)
   {
     $this->load(array('login=?', $login));
+    return $this->query;
   }
 
   public function add()

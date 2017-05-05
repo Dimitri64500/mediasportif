@@ -15,6 +15,7 @@ export class AuthenticationService {
 
 
   login(username: String, password: String): Observable<boolean> {
+    console.log(username+'ooooo');
     return this.http.post('http://localhost:8088/api/authenticate', JSON.stringify({ username: username, password: password }))
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
@@ -33,7 +34,7 @@ export class AuthenticationService {
           // return false to indicate failed login
           return false;
         }
-      });
+      })
   }
 
   logout(): void {
