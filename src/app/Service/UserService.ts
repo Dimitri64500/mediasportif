@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: Http) {}
 
   getUserbById(id: number): Promise<User> {
-    return this.http.get('http://localhost:8088/api/user/' + id)
+    return this.http.get('http://tv-rights.com/php/api/user/' + id)
       .toPromise()
       .then(res => <User> res.json());
   }
