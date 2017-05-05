@@ -34,6 +34,7 @@ import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
 
 
 @NgModule({
+
   imports: [EditorModule,
     FileUploadModule,
     GalleriaModule,
@@ -51,6 +52,7 @@ import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
     CheckboxModule,
     ListboxModule,
     ButtonModule,
+    MdSnackBarModule,
     ConfirmDialogModule,
     MessagesModule,
     GrowlModule,
@@ -70,7 +72,6 @@ import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
     LiensComponent,
     PageArticleComponent,
     FooterComponent,
-    DroitsTvComponent],
   providers: [AuthenticationService,
     ArticleService,
     CategoriesService,

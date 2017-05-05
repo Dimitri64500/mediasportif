@@ -5,8 +5,6 @@ import {AccueilComponent} from './Site/Accueil/accueil.component';
 import {RecapArticleComponent} from './Admin/RecapArticles/recap-article.component';
 import {AjoutProgrammeComponent} from './Admin/AjoutProgramme/ajout-programme.component';
 import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.component';
-import {PageArticleComponent} from "./Site/PageArticle/pagearticle.component";
-import {DroitsTvComponent} from "./Site/PageDroitsTV/page-droits-tv.component";
 
 const routes: Routes = [
   { path: 'admin', component: AdminAccueilComponent },
