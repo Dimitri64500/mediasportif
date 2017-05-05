@@ -12,60 +12,48 @@ export class ArticleService {
   creds: string;
 
   constructor(private http: Http) {}
-
   addArticles(titre: string, texte: string, resume: string, idutilisateur: number, url: string, status: string,
-              etiquette: string, activecomment: number, alaune : number, imagealaune : string): Promise<Article> {
+              etiquette: string, activecomment: number, alaune : number, imagealaune : string, souscategorie : any[]): Promise<Article> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
-    return this.http.post('http://tv-rights.com/php/api/ajouterArticle',
+    return this.http.post('http://localhost:8088/api/ajouterArticle',
       JSON.stringify({titre: titre, texte: texte, resume: resume, idutilisateur : idutilisateur,
-        url: url, status: status, etiquette: etiquette, activecomment: activecomment, alaune: alaune, imagealaune : imagealaune}), options)
+        url: url, status: status, etiquette: etiquette, activecomment: activecomment, alaune: alaune, imagealaune : imagealaune, souscategorie: souscategorie}), options)
       .toPromise()
       .then(res => { console.log(res.json().data); return res.json().data as Article; } )
       .catch(this.handleError);
   }
   getArticles(): Promise<Article[]> {
-    return this.http.get('http://tv-rights.com/php/api/articles')
+    return this.http.get('http://localhost:8088/api/articles')
       .toPromise()
       .then(res => <Article[]> res.json());
   }
   getArticlesWithAuthor(): Promise<Article[]> {
-    return this.http.get('http://tv-rights.com/php/api/articlesauthor')
+    return this.http.get('http://localhost:8088/api/articlesauthor')
       .toPromise()
       .then(res => <Article[]> res.json());
   }
 
   getArticle(url: String): Promise<Article> {
-    return this.http.get('http://tv-rights.com/php/api/article/' + url)
+    return this.http.get('http://localhost:8088/api/article/' + url)
       .toPromise()
       .then(res => <Article> res.json());
   }
   getArticlesNotes(): Promise<ArticleNote[]> {
-    return this.http.get('http://tv-rights.com/php/api/articlesnotes')
+    return this.http.get('http://localhost:8088/api/articlesnotes')
       .toPromise()
       .then(res => <ArticleNote[]> res.json());
   }
   getArticlesALaUne(): Promise<Article[]> {
-    return this.http.get('http://tv-rights.com/php/api/articlesalaune')
+    return this.http.get('http://localhost:8088/api/articlesalaune')
       .toPromise()
       .then(res => <Article[]> res.json());
   }
   getArticlesByCategorie(categorie: Number): Promise<ArticleNote[]> {
-    return this.http.get('http://tv-rights.com/php/api/articlesbycategorie/' + categorie)
+    return this.http.get('http://localhost:8088/api/articlesbycategorie/' + categorie)
       .toPromise()
       .then(res => <ArticleNote[]> res.json());
   }
-
-  deleteArticles(tableArticles: number[]): Promise<any> {
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post('http://localhost:8088/api/supprimerArticle',
-      JSON.stringify(tableArticles), options)
-      .toPromise()
-      .then(res => { } )
-      .catch(this.handleError);
-  }
-
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;

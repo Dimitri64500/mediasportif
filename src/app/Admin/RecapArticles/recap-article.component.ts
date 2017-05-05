@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../../Service/ArticleService';
 import {Article} from '../../Model/Article';
-import {ConfirmationService, Message} from 'primeng/primeng';
+//import {ConfirmationService, Message} from 'primeng/primeng';
 
 @Component({
   selector: 'my-recap-article',
@@ -12,11 +12,12 @@ import {ConfirmationService, Message} from 'primeng/primeng';
 export class RecapArticleComponent implements OnInit {
   articles: Article[];
   selectedArticles: Article;
-  msgs: Message[] = [];
+  //msgs: Message[] = [];
 
   constructor(
     private articleService: ArticleService,
-    private confirmationService: ConfirmationService) { }
+    //private confirmationService: ConfirmationService
+    ) { }
 
   getArticles(): void {
     this.articleService.getArticlesWithAuthor().then(articles => this.articles = articles);
@@ -37,7 +38,7 @@ export class RecapArticleComponent implements OnInit {
         for (let i = 0; i < tableArticles.length; i++) {
           tableId.push(tableArticles[i].id);
         }
-          this.articleService.deleteArticles(tableId);
+          //this.articleService.deleteArticles(tableId);
         this.articles = [];
         this.ngOnInit();
       }

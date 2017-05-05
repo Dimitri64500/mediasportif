@@ -5,15 +5,15 @@ import {Categorie} from '../../Model/Categorie';
 import {CategoriesService} from '../../Service/CategorieService';
 import {SelectItem} from 'primeng/primeng';
 import {SousCategorie} from '../../Model/SousCategorie';
-import {FiltreArticle} from '../filtre-sous-cat';
+import {FiltreArticle} from '../filtre-sous-cat'
 
 
 
 
 @Component({
-  selector: 'my-pagedroitstv',
-  templateUrl: './page-droits-tv.component.html',
-  styleUrls: ['./page-droits-tv.component.scss'],
+  selector: 'my-pagemediafrançais',
+  templateUrl: './page-media-francais.component.html',
+  styleUrls: ['./page-media-francais.component.scss'],
 
 })
 
@@ -21,9 +21,9 @@ import {FiltreArticle} from '../filtre-sous-cat';
   declarations: [FiltreArticle],
 })
 
-export class DroitsTvComponent implements OnInit {
+export class MediaFrancaisComponent implements OnInit {
 
-  articlesDroitsTV: ArticleNote[];
+  articlesMediaFrancais: ArticleNote[];
   categories: Categorie[];
   sousCategories: SousCategorie[];
   sousCategoriesFront: SelectItem[];
@@ -36,7 +36,7 @@ export class DroitsTvComponent implements OnInit {
 
   getCategorie(): void {
     this.categorieService.getCategories().then(categories => {
-      this.categories = categories.filter(t => t.idcategorie == 1);
+      this.categories = categories.filter(t => t.idcategorie == 2);
       this.sousCategories = this.categories[0].sousCategorie;
 
       // mise en tableau des sous-catégories pour affichage.
@@ -52,13 +52,13 @@ export class DroitsTvComponent implements OnInit {
     this.articleService.getArticlesByCategorie(categorie)
       .then(
         res => {
-          this.articlesDroitsTV = res;
+          this.articlesMediaFrancais = res;
         });
   }
 
   ngOnInit(): void {
     this.getCategorie();
-    this.getArticlesByCategorie(1);
+    this.getArticlesByCategorie(2);
   }
 
 }

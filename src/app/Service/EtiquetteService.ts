@@ -6,7 +6,7 @@ import { Etiquette } from '../Model/Etiquette';
 @Injectable()
 export class EtiquetteService {/*
   private headers = new Headers({'Content-Type': 'application/json'});
-  private etiquettesUrl = 'http://tv-rights.com/php/api/apiArticlesEtiquettes';  // URL to web api
+  private etiquettesUrl = 'http://localhost:8088/api/apiArticlesEtiquettes';  // URL to web api
 
   constructor(private http: Http) { }
 

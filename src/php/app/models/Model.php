@@ -25,7 +25,23 @@ class Model extends DB\SQL\Mapper{
   }
   function parse_body(){
     $f3=Base::instance();
-    $head=getallheaders();
+    if (!function_exists('getallheaders'))
+    {
+      function getallheaders()
+      {
+        $headers = array ();
+        foreach ($_SERVER as $name => $value)
+        {
+          if (substr($name, 0, 5) == 'HTTP_')
+          {
+            $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+          }
+        }
+        return $headers;
+      }
+    }
+
+    $head= getallheaders();
     switch (true) {
       case (strpos($head['Content-Type'],'application/json')!==false):{
         $input=json_decode($f3->get('BODY'));

@@ -5,8 +5,10 @@ import {AccueilComponent} from './Site/Accueil/accueil.component';
 import {RecapArticleComponent} from './Admin/RecapArticles/recap-article.component';
 import {AjoutProgrammeComponent} from './Admin/AjoutProgramme/ajout-programme.component';
 import {AjoutArticleComponent} from './Admin/AjoutArticle/ajout-article.component';
-import {PageArticleComponent} from "./Site/PageArticle/pagearticle.component";
-import {DroitsTvComponent} from "./Site/PageDroitsTV/page-droits-tv.component";
+import {PageArticleComponent} from './Site/PageArticle/pagearticle.component';
+import {DroitsTvComponent} from './Site/PageDroitsTV/page-droits-tv.component';
+import {MediaFrancaisComponent} from './Site/PageMediaFrancais/page-media-francais.component';
+import {MediaEtrangersComponent} from './Site/PageMediaEtrangers/page-media-etrangers.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminAccueilComponent },
@@ -15,6 +17,9 @@ const routes: Routes = [
   { path: 'admin/ajoutprogramme', component: AjoutProgrammeComponent },
   { path: 'article/:url', component : PageArticleComponent},
   { path: 'Droits-TV', component: DroitsTvComponent},
+  { path: 'Media-francais', component: MediaFrancaisComponent},
+  { path: 'Media-etrangers', component: MediaEtrangersComponent},
+
   { path: '', component: AccueilComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' }

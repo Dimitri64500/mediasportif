@@ -1,3 +1,4 @@
+<p-messages [value]="msgs"></p-messages>
 <div class="ui-grid ui-grid-responsive ui-fluid container">
   <div class="ui-grid-row">
     <div class="ui-grid-col-3">
@@ -38,7 +39,7 @@
         <p>Image à la une (683x384)</p>
       </div>
         <div class="ui-grid-row">
-          <p-fileUpload name="myfile" url="http://tv-rights.com/php/upload" chooseLabel="."
+          <p-fileUpload name="myfile" url="http://localhost:8088/upload" chooseLabel="."
                         uploadLabel="." (onUpload)="image($event)"
                         cancelLabel="."></p-fileUpload>
         </div>
@@ -69,7 +70,7 @@
 
       <div class="ui-grid-row">
         <div class="editor">
-          <p-editor [(ngModel)]="article.texte" [style]="{'height':'400px'}"></p-editor>
+          <p-editor [(ngModel)]="article.texte" [style]="{'height':'500px'}"></p-editor>
         </div>
       </div>
     </div>
@@ -98,6 +99,5 @@
     <button pButton type="button" (click)="callApi('brouillon')" label="Enregistrer"></button>
     <button pButton type="button" (click)="callApi('active')" label="Publier"></button>
   </div>
-
 </div>
 
